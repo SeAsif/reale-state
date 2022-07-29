@@ -1,0 +1,95 @@
+<?
+global $is_mobile;
+?>
+<?php
+	$myControllerName=Zend_Controller_Front::getInstance()->getRequest()->getControllerName();	
+	$myActionName=Zend_Controller_Front::getInstance()->getRequest()->getActionName();
+?>
+<div class="list-group side_menu_class">
+
+	<a class="list-group-item home_class orangeclass textwhite " data-title="home"  href ="<?php echo $this->baseUrl('profile/home')?>"><span class="home_icon"></span> &nbsp; Home</a>
+	<a class="list-group-item myaccount_class greenclass textwhite" data-title="profile"  href ="<?php echo $this->baseUrl('profile')?>"><span class="myaccount_icon"></span> &nbsp; My Profile</a>
+    <a class="list-group-item new_land_class purpleclass textwhite" data-title="landing-page-templates"  href="<?php echo $this->url(array(),'create_page')?>"> <span class="new_landing_icon"></span>&nbsp;  Create New Landing Page</a>
+    
+       
+     <a class="list-group-item land_class pinkclass textwhite" data-title="landing-pages" href="<?php echo $this->url(array(),'landing_pages')?>">  <span class="landing_icon"></span> &nbsp;  Manage Landing pages</a>
+     
+     <a class="list-group-item lead_class yellowclass textwhite" data-title="allleads"  href ="<?php echo $this->baseUrl()?>/landingpages/allleads"> <span class="view_all_lead_icon"></span> &nbsp;View All Leads</a>
+     
+     <a class="list-group-item lead_class greyclass textwhite" data-title="education"  href ="<?php echo $this->baseUrl()?>/agent-lead"> <span class="education_icon"></span> &nbsp;EDUCATION</a>
+	
+    
+    <a class="list-group-item logout_class blueclass textwhite" data-title="logout"  href ="<?php echo $this->url(array(),'front_logout')?>"> <span class="logout_icon"></span> &nbsp;Logout</a>
+    
+    
+</div>
+<? if($myControllerName=='landingpages' && $myActionName=='index'){?>
+<div class="video_link">
+<div>Do You Need Help Creating  <br />
+A Landing Page?</div>
+<div class="video_link_2" data-toggle="modal" data-target="#how_modal">CLICK HERE </div>
+</div>
+
+<? }?>
+
+<div class="modal fade bs-example-modal-lg "  id="how_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg margintop60">
+    <div class="modal-content">
+    	 
+      	 <div class="fulwidthdiv" id="mediaplayermk">
+            	
+                
+
+			<?php /*?>	<video style="max-width:100%" id="bgvid" preload=""  controls loop onEnded="this.currentTime=0"  class="vjs-tech" src="<?=HTTP_SITE_IMAGES?>/land_how.mp4" >
+                    <object  autoplay loop onended="this.currentTime=0"  name="html5_video_fallback"  style="width:100%;" class="leanback-player-flash-fallback" id="html5_video_fallback" width="100%" height="100%" type="application/x-shockwave-flash" data="http://praegnanz.de/html5video/player/leanback/player.swf" >
+                    <param name="movie" value="http://praegnanz.de/html5video/player/leanback/player.swf">
+                    <param name="allowfullscreen" value="true">
+                    <param name="allowscriptaccess" value="always">
+                    <param name="wmode" value="transparent">
+                    <param name="aspectratio" value="16:9">
+                    
+                    <param name="flashvars" value="autostart=true&controlbar=false&controls=false&file=<?=HTTP_SITE_IMAGES?>/land_how.mp4">     
+                    </object>
+                    
+                   </video><?php */?>
+            </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="<?=SITE_HTTP_URL?>/public/front_js/jwplayer.js"></script>
+
+<script>
+$(document).ready(function(e) {
+	var is_mobile='<?=$is_mobile?>';
+	if(is_mobile!=1){
+     var videoWidth='100%';var videoHeight=530;
+	jwplayer("mediaplayermk").setup({
+		file:'<?=HTTP_SITE_IMAGES?>/how.mp4',
+		width:videoWidth,
+		visualplaylist:false,
+		stretching:'fill',
+		"controlbar.idlehide":true,
+		repeat:"list",
+		height:videoHeight,
+		background:'#383838', 
+	});
+	}
+	else
+	{
+		 var videoWidth='100%';var videoHeight=530;
+	jwplayer("mediaplayermk").setup({
+		file:'<?=HTTP_SITE_IMAGES?>/land_how_mobile.mp4',
+		width:videoWidth,
+		visualplaylist:false,
+		stretching:'fill',
+		"controlbar.idlehide":true,
+		repeat:"list",
+		background:'#383838', 
+			});
+	}
+});
+ $('#how_modal').on('hidden.bs.modal', function () {
+    // do something…
+ 		 jwplayer("mediaplayermk").stop();
+ });
+</script>

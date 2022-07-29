@@ -1,24 +1,13 @@
-# Composer files
-composer.phar
-vendor/
+public\resources\blog_images\*
+public\resources\company_logo\*
+public\resources\media_images\*
+public\resources\profile_images\*
+public\resources\slider_images\*
+public\resources\page_templates\*
 
-# Local configs
-config/autoload/*.local.php
-
-# Binary gettext files
-*.mo
-
-# Data
-data/logs/
-data/cache/
-data/sessions/
-data/tmp/
-temp/
-
-#Doctrine 2
-data/DoctrineORMModule/Proxy/
-data/DoctrineORMModule/cache/
-
-# Legacy ZF1
-demos/
-extras/documentation
+public\site_images\1453096156_video.mp4
+public\site_images\how.mp4
+public\site_images\key.mp4
+public\site_images\land_how_mobile.mp4
+public\site_images\land_how.mp4
+public\site_images\start_here.mp4

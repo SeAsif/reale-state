@@ -1,0 +1,52 @@
+<div class="login"> 
+  <!-- BEGIN LOGO -->
+  <div class="logo_register"> <img  src="<?php echo HTTP_SITE_IMAGES?>/logo.png" alt=""/>  </div>
+  <!-- END LOGO --> 
+  
+  <!-- BEGIN LOGIN -->
+  <div class="content">
+    <div class="hr_main_div">
+      <div class="hr_sub_div sub_div_1"></div>
+      <div class="hr_sub_div sub_div_2"></div>
+      <div class="hr_sub_div sub_div_3"></div>
+      <div class="hr_sub_div sub_div_4"></div>
+    </div>
+    <div class="content_padding">
+	<?=$this->form?>
+    </div>
+    <div class="hr_main_div text-center bottom_info_div"> <span><a  class="signu_txt" href="<?=$this->baseUrl()?>/login">Sign In Now !</a></span> <span class="btw_span"> | </span> <span><a  class="for_got_txt" href="<?=$this->baseUrl()?>/forgot-password">Forgot your password?</a></span> </div>
+  </div>
+  
+<script>
+$(document).ready(function(){
+	$("#submitbtn").prop('disabled', true);
+	$("#user_email").focusout(function() { 
+	  var emailid = $(this).val();
+	  $.ajax({
+		type:"post",
+		url:"ajaxform.php",
+		data:"emailid="+emailid,
+		success:function(data){	
+		  if(data==0){ 
+			//alert("User not available");
+			$("#submitbtn").prop('disabled', true);
+			$(".earrnotis").hide();
+			$("#user_email").after("<p class='earrnotis'>Please use the same email used during purchase. If you would like to purchase Agent Lead Genesis, <a href='http://www.agentleadgenesis.com/pricing'>click here</a>. Questions? Contact us at <a href='mailto:support@agentleadgenesis.com'>support@agentleadgenesis.com</a></p>" );
+		  }
+		  else {
+			$("#submitbtn").prop('disabled', false);
+			$(".earrnotis").hide();
+		  }
+		}
+	  });	
+	});
+});
+</script>  
+  
+  <!-- END LOGIN --> 
+  
+  <div> &nbsp;</div>
+  <div> &nbsp;</div>
+  <div> &nbsp;</div>
+  
+</div>

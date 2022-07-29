@@ -1,0 +1,113 @@
+
+<?php
+global $myActionName,$myControllerName,$myModuleName;
+	$myControllerName=Zend_Controller_Front::getInstance()->getRequest()->getControllerName();	
+	$myActionName=Zend_Controller_Front::getInstance()->getRequest()->getActionName();
+?>
+<? if($myControllerName!='index'){ ?>
+<footer>
+	<div class="footer_style fullwidthdiv">
+    	<div class="container">
+        	<div class="row">
+            	<div class="col-md-9">
+ 					<ul class="nav navbar-nav">
+                <li><a class="option_class" href="<?php echo $this->baseUrl()?>/profile/home" data-title="home">Home</a></li>
+                 <? if(isset($this->user) &&(!empty($this->user->user_id))){?>
+                <li><a class="option_class_black" href="<?php echo $this->baseUrl()?>/profile" data-title="profile">My Profile</a></li> 
+                <? }?>
+<?php /*?>                <li><a class="option_class" href="<?php echo $this->baseUrl()?>/about-us" data-title="about-us">About Us</a></li>
+<?php */?>               
+				
+                 <li><a class="option_class" href="<?php echo $this->baseUrl()?>/terms-conditions" data-title="terms-conditions">Terms & Conditions</a></li> 
+                 <li><a class="option_class" href="<?php echo $this->baseUrl()?>/privacy" data-title="privacy">Privacy policy</a></li> 
+          </ul>
+       			 </div>
+                 <div class="col-md-3 text-right top_pad_div">
+                 
+ 					<a  href="<?=$this->site_configs['social_link_facebook']?>" target="_blank" class="inline-block fb_icon "></a>
+                    <a  href="<?=$this->site_configs['social_link_twitter']?>"  target="_blank" class="inline-block t_icon"></a>
+                    <a href="<?=$this->site_configs['social_link_pinterest']?>"  target="_blank" class="inline-block p_icon"></a>
+                    <a href="<?=$this->site_configs['social_link_google']?>" target="_blank" class="inline-block g_icon"></a>
+                    <a href="<?=$this->site_configs['social_link_tumblr']?>" target="_blank"  class="inline-block tu_icon"></a>
+                    <a href="<?=$this->site_configs['social_link_instagram']?>" target="_blank"  class="inline-block i_icon"></a>
+       			 </div>
+                 <div class="col-md-12 overflow_hidden">
+                 	<hr class="footer_hr" />
+                 </div>
+                 <div class="col-md-12 overflow_hidden text-center">
+                 	<span class="copy_right"> &copy; <?php echo date('Y')?></span>
+                    <span class="agent_lead">Agent Lead Genesis</span>
+                 </div>
+                 <div>&nbsp;</div>
+                 
+            </div>
+        </div>
+        
+    </div>
+</footer>
+<? } else {?>
+<footer>
+	<div class="fullwidthdiv footer_container">
+    	<div class="container">
+        	<div class="row">
+            	<div class="col-md-2  col-sm-2 text-left">
+                	<div class="row">
+                    	<p>Learn More</p>
+                        <p><a  href="<?php echo $this->baseUrl()?>/pricing">Pricing</a></p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-2">
+                	<div class="row">
+                    	<p>Company</p>
+                        <p><a href="<?php echo $this->baseUrl()?>/about-us" >About Us</a></p>
+                        <p><a  href="<?php echo $this->baseUrl()?>/privacy">Privacy Policy</a></p>
+                        <p><a  href="<?php echo $this->baseUrl()?>/terms-conditions">Terms of Use</a></p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-2">
+                	
+                </div>
+                 <div class="col-md-3 col-sm-3">
+                	<div class="row">
+                    	<p>Follow Us</p>
+                        <p><a  href="<?=$this->site_configs['social_link_facebook']?>" target="_blank" class="inline-block"><span class="ifb_icon"></span> Facebook</a></p>
+                        <p><a  href="<?=$this->site_configs['social_link_twitter']?>"  target="_blank" class="inline-block"><span class="it_icon"></span> Twitter</a></p>
+                        <p><a href="<?=$this->site_configs['social_link_google']?>" target="_blank" class="inline-block "><span class="ig_icon"></span> Google Plus</a></p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 text-right">
+                	<div class="row copy_txt_footer">
+                    	<p>&copy;2016 Agent Lead Genesis. All rights reserved.</p>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<? } ?>
+
+<?
+$slog= basename($_SERVER['REQUEST_URI']); 
+?>
+ <script>
+ 		$(document).ready(function(e)
+		{
+				var slog='<?=$slog?>';
+				$('a[data-title="<?php echo trim($slog)?>"]').addClass("option_class_active");
+				if(slog=='change-avatar' || slog=='change-password' )
+				{
+					$('a[data-title="profile"]').addClass("option_class_active");
+				}
+				if(controller=='landingpages' && (action=='add' ||action=='addcustompage' ))
+				{
+					$('a[data-title="landing-page-templates"]').addClass("option_class_active");
+				}
+				if(controller=='landingpages' && (action=='edit'|| action=='editcustompage' ))
+				{
+					$('a[data-title="landing-pages"]').addClass("option_class_active");
+				}
+		}
+		
+		);
+ </script>

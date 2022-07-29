@@ -1,0 +1,466 @@
+<!-- template -->
+<div ng-app="AgentLeadGenesis" ng-controller="AgentLeadGenesisController" id="Current-Active-Listning">
+   <div class="row">
+      <div class="col-md-3 mr-top">
+         <!-- form -->
+         <form method="post" name="new_temp" id="new_temp" class="profile_form" enctype="multipart/form-data">
+            <div class="custom-form-wrapper">
+               <a href="#" id="hover_div"  class="cu_font" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right"  data-content="The PAGE NAME has two functions. It will be displayed to the public as a part of the URL link. Also, choosing a short, easy to remember name will help you reference the landing page in the future. Do not add any special characters or spaces to the page name. For example you might name your page 'San Diego' and it will display as <a><?=SITE_HTTP_URL?>/sandiego</a>"><span class="fa fa-question-circle"></span></a>
+               <p class="back-p" style="margin-bottom: 50px;">
+                  <a href="<?php echo $this->baseUrl('landing-page-templates')?>" class="back-b btn btn-primary" style="float: left;">
+                    <i class="fa fa-angle-left"></i>&nbsp;
+                    Go Back
+                  </a>
+                </p>
+               <p class="cutom_group"><?php echo $this->form->lp_bg_image?> 
+                  <?php echo $this->form->lp_c_sent1?>
+               </p>
+            </div>
+            <div class="row" id="sent1">
+               <div class="col-md-12">
+                  <div class="border_div_custom">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <h3>Property Details</h3>
+                        </div>
+                        <div class="clearfix">
+                           &nbsp;
+                        </div>
+                        <div class="col-md-6">
+                           <?php echo $this->form->lp_beds?>
+                        </div>
+                        <div class="col-md-6">
+                           <?php echo $this->form->lp_baths?>
+                        </div>
+                        <div class="col-md-6">
+                           <?php echo $this->form->lp_square_feet?>
+                        </div>
+                        <div class="col-md-6">
+                           <?php echo $this->form->lp_city?>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-12">
+                           <?php echo $this->form->lp_redirect_link?>
+                           <?php
+                              if(!empty($this->pop_data)){
+                                  ?>
+                           <input type="hidden" name="delete_img" id="delete_img" />
+                           <?php
+                              }
+                              ?>
+                        </div>
+                     </div>
+                  </div>
+                  <?=$this->form->lp_pixel_code?> 
+               </div>
+            </div>
+         </form>
+         <div class="fullwidthdiv">
+            <div class="col-md-12">
+               <div class="border_div_custom">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <h3>Thumbnail Photos(Optional)(Max 5 photos)</h3>
+                     </div>
+                     <div class="col-md-12">
+                        <form id="fileupload" class="image_div" action="" method="POST" enctype="multipart/form-data">
+                           <!-- Redirect browsers with JavaScript disabled to the origin page -->
+                           <noscript><input type="hidden" name="redirect" value="http://blueimp.github.io/jQuery-File-Upload/"></noscript>
+                           <input ng-model="files" ngf-select="files" type="file" name="files[]" id="files" multiple="multiple"> 
+                           <div role="presentation" width="100%" class="table whitefont " style="margin-top:10px;margin-bottom:0px !important">
+                              <div class="files"></div>
+                           </div>
+                           <?php 
+                              if(isset($this->pop_photos) && !empty($this->pop_photos))
+                              {
+                                  
+                                  ?>
+                           <div class="table">
+                              <?php
+                                 foreach($this->pop_photos as $k=>$v)
+                                 {
+                                 
+                                 ?>
+                              <div class="inline-block text-center event_images template-download whitefont" id="gallery_image_<?php echo $v['lpi_id'] ?>">
+                                 <img class="img-thumbnail" src="<?php echo HTTP_TEMPLATE_IMAGES ?>/87/<?php echo $v['lpi_lp_name'] ?>" width="100"  />
+                                 <br />
+                                 <br />
+                                 <a class="bear btn-danger im_del" onclick="removeGallery('<?php echo $v['lpi_id'] ?>')"><span class="fa fa-trash-o"></span></a>
+                                 <div class="clearfix"></div>
+                                 <br />
+                              </div>
+                              <?php
+                                 }
+                                         ?>
+                           </div>
+                           <?php  
+                              }
+                              ?>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <?php
+            if(!empty($this->pop_data))
+            {
+                ?>
+         <p id="lp_bg_image_pre" class="text-left"><img src="<?=HTTP_TEMPLATE_IMAGES?>/450/<?=$this->pop_data['lp_bg_image']?>"  style="max-width:100%"  alt="Lead" /></p>
+         <script>
+            $(document).ready(function(e) {
+                $('#lp_bg_image').removeClass("required");
+            $('#lp_bg_image_pre').insertAfter($('#lp_bg_image').parent());  
+            });
+         </script>
+         <?php
+            }
+            
+            ?>
+         <form method="post" name="new_temp_new" id="new_temp_new">
+            <div class="col-md-12">  <?php echo $this->form->lp_url?></div>
+            <div class="col-md-12">  <?php echo $this->form->submitbtn?>  </div>
+            <div class="clearfix">&nbsp;</div>
+            <br />
+         </form>
+         <script>
+            var APPLICATION_PATH_USER ='<?=SITE_HTTP_URL?>/landingpages/uploadimage'
+            $(document).ready(function(e) {
+               
+               
+               $('#hover_div').insertBefore($('#lp_url'));
+               $('#sent1').insertAfter($('#lp_c_sent1').parent());
+                   $('[data-toggle="popover"]').popover({
+                       
+                       
+                       });  
+            
+            });
+            $('#submitbtn').click(function(e) {
+              if( $('#new_temp').valid() && $('#new_temp_new').valid())
+              {
+                  $('#wrap').css('display','block');
+                   $($('#lp_url').parent()).insertAfter($('#lp_redirect_link'));
+                   document.new_temp.submit();
+                  
+              }
+            });
+            
+            function removeGallery(idval)
+            {
+            var test=confirm("Are you sure you want to remove this image"); 
+               if(test)
+               {
+                       $.ajax({
+                       url: "<?php echo SITE_HTTP_URL ?>/landingpages/updatedelcount",
+                       success: function(dataarr){
+                           $('#gallery_image_'+idval).remove();
+                           $("#delete_img").val($("#delete_img").val()+','+idval);     
+                       }
+                       });  
+                   
+               }
+            }
+         </script>
+         <script id="template-upload" type="text/x-tmpl">
+            {% for (var i=0, file; file=o.files[i]; i++) { %}
+                <div class="template-upload fade">
+                    <div>
+                        <span class="preview"></span>
+                    </div>
+                    <div>
+                        <p class="name">{%=file.name%}</p>
+                        <strong class="error text-danger"></strong>
+                    </div>
+                    <div>
+                        <p class="size">Processing...</p>
+                        <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+                    </div>
+                    <div>
+                        {% if (!i && !o.options.autoUpload) { %}
+                            <button class="btn btn-primary btn-block start" disabled>
+                                <i class="fa fa-upload"></i>
+                               
+                            </button>
+                        {% } %}
+                        {% if (!i) { %}
+                            <button class="btn btn-warning btn-block cancel" >
+                                <i class="fa fa-ban"></i>
+                               
+                            </button>
+                        {% } %}
+                    </div>
+                </div>
+            {% } %}
+         </script>
+         <script id="template-download" type="text/x-tmpl">
+            {% for (var i=0, file; file=o.files[i]; i++) { 
+            if($('input[name="featured"]').val()==undefined)
+            {
+            var chk='checked="checked"';
+            $('#main_image').val(file.name);
+            }
+            else
+            {
+            chk='';
+            }
+            
+            file.thumbnailUrl=file.thumbnailUrl+'?<?=time()?>';
+            
+                if (file.error)
+                {
+                    if(file.error=="Image requires a minimum width")
+                    {
+                        alert('Image should be of atleast 200 x 100 pixel.');
+                    }
+                    else
+                    {
+                        alert(file.error);
+                    }
+                }
+                else
+                {
+                
+             %}
+            
+                <tr class="template-download fade">
+                    <td style="text-align:left">
+                        <span class="preview" style="cursor:pointer;">
+                            {% if (file.thumbnailUrl) { %}
+                                <img draggable="false"  src="{%=file.thumbnailUrl%}">
+                            {% } %}
+                        </span>
+                    </td>
+                    <td>
+                    
+                    </td>
+                    <td style="max-width:200px">
+                        <p class="name">
+                            {% if (file.url) { %}
+                                <a  title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+                            {% } else { %}
+                                <span>{%=file.name%}</span>
+                            {% } %}
+                        </p>
+                        {% if (file.error) { %}
+                            <div><span class="label label-danger">Error</span> {%=file.error%}</div>
+                        {% } %}
+                    </td>
+                    <td style="max-width:200px">
+                        <span class="size">{%=o.formatFileSize(file.size)%}</span>
+                    </td>
+                    <td colspan="2" style="text-align:right">
+                        {% if (file.deleteUrl) { %}
+                            
+                            <button  class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                                <i class="fa fa-trash-o"></i>
+                               
+                            </button>
+                            
+                            
+                        {% } else { %}
+                            <button class="btn btn-warning cancel" >
+                                <i class="fa fa-ban"></i>
+                                <span>Cancel</span>
+                            </button>
+                        {% } %}
+                    </td>
+                </tr>
+                
+                
+            {% 
+            
+                    }
+                    
+                    
+                    
+            } 
+                
+                    $('img').on('mousedown', function(e) {
+                    e.preventDefault();
+                    });
+                    
+                    $('img').bind("contextmenu", function(e) {
+                    e.preventDefault();
+                    });
+                
+            
+            chk=''; %}
+            
+            
+         </script>
+         <!-- form end -->
+      </div>
+      <div class="col-md-9">
+         <!-- template start -->
+         <div align="center">
+            <div class=" text-left temp_head"> Customize <?=$this->temp_data['pt_title']?> Template</div>
+            <div class="maxwidth">
+               <div class="innerpage" style="background-color:transparent !important;">
+                  <div class="main_rel_div">
+                     <div class="fullwidthdiv">
+                     </div>
+                     <div class="">
+                        <div class="fullwidthdiv custom_buyer Main_bg_Custom">
+                           <div class="row">
+                              <div class="col-md-12 buyer_head">
+                                 <div class="max_width_div_cu_new">
+                                    {{just_listed_in}}
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="max_width_div_cu">
+                                    <div class="row row-eq-height cutom_cu_pad">
+                                       <div class="col-md-9 col-xs-12 col-sm-9   padding0 res_changes hidden-lg">
+                                          <img src="<?php echo $this->baseUrl()?>/public/resources/page_templates/450crop/temp.png?2343" class="img-responsive height100">
+                                       </div>
+                                       <div class="col-md-9 col-lg-9 col-xs-12 col-sm-9   padding0 res_changes visible-lg">
+                                          <img style="width:100%" ngf-src="home_photo" class="img-responsive height100">
+                                       </div>
+                                       <div class="col-md-3 col-lg-3 col-xs-12 col-sm-3 padding-0 text-center">
+                                          <div class="row right_cu_div">
+                                             <div class="col-md-12 col-xs-6 col-sm-12 eq_hi_div">
+                                                <div class="fullwidthdiv">
+                                                   <img src="<?php echo $this->baseUrl()?>/public/site_images/bed.png" class="img-responsive img1">
+                                                </div>
+                                                <div class="fullwidthdiv des_div_cu">{{beds}} Beds</div>
+                                             </div>
+                                             <div class="clearfix inn_height_div hidden-xs "></div>
+                                             <div class="col-md-12 col-xs-6 col-sm-12 eq_hi_div">
+                                                <div class="fullwidthdiv">
+                                                   <img src="<?php echo $this->baseUrl()?>/public/site_images/bath.png" class="img-responsive">
+                                                </div>
+                                                <div class="fullwidthdiv des_div_cu">{{baths}} Baths</div>
+                                             </div>
+                                             <div class="clearfix inn_height_div "></div>
+                                             <div class="col-md-12 col-xs-6 col-sm-12 eq_hi_div">
+                                                <div class="fullwidthdiv">
+                                                   <img src="<?php echo $this->baseUrl()?>/public/site_images/sq.png" class="img-responsive">
+                                                </div>
+                                                <div class="fullwidthdiv des_div_cu">{{area}} Sq. ft.</div>
+                                             </div>
+                                             <div class="clearfix inn_height_div hidden-xs"></div>
+                                             <div class="col-md-12 col-xs-6 col-sm-12 eq_hi_div">
+                                                <div class="fullwidthdiv">
+                                                   <img src="<?php echo $this->baseUrl()?>/public/site_images/loc.png" class="img-responsive">
+                                                </div>
+                                                <div class="fullwidthdiv des_div_cu">
+                                                   {{city}}
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="max_width_div_cu max_width_div_cu_new">
+                                    <div class="row height_ul">
+                                       <ul class="enlarge">
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="max_width_div_cu">
+                                    <button class="button_for_cutombuyer" onclick="" disabled="disabled">
+                                    I Want to Learn More About This Home!
+                                    </button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+   // AgentLeadGenesis Angular Controller 
+   $(document).ready(function(e) {
+          var app = angular.module('AgentLeadGenesis', ['ngFileUpload']); 
+   
+          app.controller('AgentLeadGenesisController', function createALGController($scope) {
+                  $scope.beds = ''; 
+                  $scope.baths = ''; 
+                  $scope.area = ''; 
+                  $scope.city = ''; 
+                  $scope.files = [];
+                  
+                  $scope.home_photo = '/public/resources/page_templates/1600crop/temp.png';
+                  $scope.just_listed_in = 'Just Listed In The Perfect San Jose Neighborhood'; 
+   
+                  
+                  $scope.location_disappear = true; 
+                  $scope.onFocus = ()=>{
+                      if ($scope.location_disappear){
+                          $scope.just_listed_in = ""; 
+                          $scope.location_disappear = false; 
+                      }
+                  }
+   
+          });
+          
+          $("head").append(`<style> #lp_url {
+                                  background: #fff !important;
+                              }</style>`);
+   
+   //        if (window.location.hostname != "localhost"){
+   //           $('img').each(function(){
+   //               repl = $(this).attr("src").replace("http://localhost/agentleads/","");
+   //               $(this).attr("src", repl );
+   //           })
+   //           $('video').each(function(){
+   //               repl = $(this).attr("src").replace("http://localhost/agentleads/","");
+   //               $(this).attr("src", repl );
+   //           })
+   //           $('param[name=flashvars]').each(function(){
+   //               repl = $(this).attr("value").replace("http://localhost/agentleads/","");
+   //               $(this).attr("value", repl );
+   //           })
+   //       }
+   
+      });
+      
+      $( document ).ajaxSuccess(function( event, xhr, settings ) {
+          setTimeout(() => {
+              $(".enlarge > li").remove(); 
+              $('.files').children('tr').children('td').children('span').children('img').each(function(){
+                  var img_link =  $(this).attr("src").replace("thumbnail/",""); 
+                  $(".enlarge").append(`
+                      <li id="`+replaceSpaceAndHypen(img_link)+`">
+                          <img src="`+img_link + `" class="img-responsive">
+                      </li>
+                  `);
+              });
+          }, 400);    
+      });
+   
+      function replaceSpaceAndHypen(key) {
+          /**
+           * Replace Space And Middle Under Scores With Under Score(-)
+           */
+          return ((((((((key.toString().replace(/-/g, "_")).replace(/\//g, "_")).replace(/ /g, "_")).replace("?", "_")).replace(/,/g, "_")).replace(")", "_")).replace("(", "_")).replace("%", "_")).replace(/\./g, "_").replace(/\:/g, "_");
+      }
+      
+</script>
+<script type="text/javascript">
+   jQuery(document).ready(function($) {
+       $("#sidebar").css({
+           display: 'none'
+       });
+       $('#Current-Active-Listning').parent().removeClass('col-md-9');
+       $('#Current-Active-Listning').parent().removeClass('col-sm-7');
+   
+       $('#Current-Active-Listning').parent().addClass('col-md-12');
+   });
+</script>

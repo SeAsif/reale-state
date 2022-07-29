@@ -1,0 +1,130 @@
+<?php
+global $myActionName,$myControllerName,$myModuleName;
+	$myControllerName=Zend_Controller_Front::getInstance()->getRequest()->getControllerName();	
+	$myActionName=Zend_Controller_Front::getInstance()->getRequest()->getActionName();
+	$myModuleName=Zend_Controller_Front::getInstance()->getRequest()->getModuleName();
+?>
+
+<?
+//prd($myControllerName);
+if($myControllerName!='index')
+{
+	$cls="header-inner";
+}
+else
+{
+	$cls="";
+}
+
+?>
+<? if($myControllerName!='index'){ ?>
+
+<header id="header" class="header">
+  <nav class="navbar navbar-default">
+    <div class="header-abs <?php echo $cls?>" >
+      <div class="container">
+      
+      	
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+        	
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo_class" href="<?=$this->baseUrl()?>/profile/home"><img src="<?=HTTP_SITEIMG_PATH?>/logo_inner.png" /></a>
+          
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        
+          <ul class="nav navbar-nav text-upper pull-right pull-remove">
+          
+<?php /*?>                <li><a class="option_class" href="<?php echo $this->baseUrl()?>/about-us" data-title="about-us">ABOUT US</a></li>
+   <?php */?>            
+ <li><a class="option_class" href="<?php echo $this->baseUrl()?>/profile/home" data-title="home">HOME</a></li> 
+                 <? if(isset($this->user) &&(!empty($this->user->user_id))){?>
+                <li><a class="option_class_black" href="<?php echo $this->baseUrl()?>/profile" data-title="profile">MY PROFILE</a></li> 
+                <? }?>
+                <?php /*?>  <li><a class="option_class"  href="<?php echo $this->baseUrl()?>/blog" data-title="blog">BLOG</a></li><?php */?> 
+                   <li><a class="option_class"  href="<?php echo $this->baseUrl()?>/agent-lead" data-title="contact-us">EDUCATION</a></li>
+
+				     
+          </ul>
+         
+        </div><!-- /.navbar-collapse -->
+      
+      </div><!-- /.container-fluid -->
+    </div>
+  </nav>
+</header>
+
+<? } else { ?>
+<header id="header">
+  <nav>
+    <div class="header-abs header_abs_home" id="header-sroll">
+      <div class="container" >
+      
+      	
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+         <h1> <a class="navbar-brand logo_class" href="<?=$this->baseUrl()?>/profile/home"><img src="<?=HTTP_SITEIMG_PATH?>/home_logo.png" /></a></h1>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        
+          <ul class="nav navbar-nav home_ul text-upper pull-right pull-remove">
+          
+<?php /*?>                <li><a class="option_class" href="<?php echo $this->baseUrl()?>/about-us" data-title="about-us">ABOUT US</a></li>
+   <?php */?>            
+
+                 <? if(isset($this->user) &&(!empty($this->user->user_id))){?>
+                <li><a class="option_class_black" href="<?php echo $this->baseUrl()?>/profile" data-title="profile">MY PROFILE</a></li> 
+                <? }
+				else 
+				{
+					?>
+                <li><a class="option_class" href="<?php echo $this->baseUrl()?>/register" data-title="home">SIGNUP</a></li> 
+                                 <li><a class="option_class" href="<?php echo $this->baseUrl()?>/login" data-title="tutorial">LOGIN</a></li>
+
+
+                    <?
+				}
+				?>
+                  <li><a class="option_class"  href="#" data-title="blog">BLOG</a></li> 
+                   <li><a class="option_class"  href="<?php echo $this->baseUrl()?>/contact-us" data-title="contact-us">CONTACT US</a></li>
+                   <?php /*?><li><a class="option_class" href="<?php echo $this->baseUrl()?>/support" data-title="support">SUPPORT</a></li> <?php */?>
+
+				     
+          </ul>
+         
+        </div><!-- /.navbar-collapse -->
+      
+      </div><!-- /.container-fluid -->
+    </div>
+  </nav>
+</header>
+<? } ?>
+<? global $is_mobile;
+if($is_mobile!=1){
+?>
+<script>
+$(window).scroll(function () {
+     var sc = $(window).scrollTop()
+    if (sc > 100) {
+        $("#header-sroll").addClass("small")
+    } else {
+        $("#header-sroll").removeClass("small")
+    }
+});
+</script>
+<? } ?>
+

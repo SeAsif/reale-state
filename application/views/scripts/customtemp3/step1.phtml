@@ -1,0 +1,61 @@
+<style>
+.modal-backdrop{z-index:1}
+.modal{z-index:2}
+.modal-dialog{margin:30px 0;}
+.modal-content{padding:25px;padding-bottom:0;}
+.color-background,.color-background:hover,.color-background:active,.color-background:focus{background:<?=$this->btn_color?> !important;}
+.Preview_section{padding:25px;}
+.close{margin-right:-20px;}
+body.modal-open{position:fixed;}
+.popupmodal{padding-top:4%;}
+</style>
+<?php if($this->page_data['lp_page_publish']=='preview'){?>
+    <div class="Preview_section">
+     <a class="lineheight" href="<?php echo $this->url(array('pt_id'=>$this->bg_image_data['pt_id'],'lp_id'=>$this->lp_id),'add_custom_page')?>"  >
+        <button class="btn">Go Back</button>
+     </a>
+     <a class="lineheight" href="<?php echo $this->url(array('lp_id'=>$this->lp_id),'publish_custom_page')?>"  >
+        <button class="btn">Done</button>
+      </a>
+    </div>
+<?php }?>
+<div class="table tableheight custom-back" style="background:url(<?=HTTP_TEMPLATE_IMAGES?>/<?=$this->image_main?>)">
+    <div class="table-cell vertical-middle">
+    	<div class="inner-form">
+        	<div class="desc">
+            <?=$this->title1?>            
+            </div>            
+            <button type="button" id="text_2" class="btn form-btn color-background" data-toggle="modal" data-target="#myModal"><?=$this->button_text?></button>
+        </div>
+    </div>
+</div>
+<!---Modal content--->
+<div class="modal fade bs-example-modal-lg popupmodal" data-backdrop="static" id="myModal"  role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:-20px !important;">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="editable_popup-headline modal-title" id="text_3"><?=$this->popup_text?></h4><br />
+					</div>
+					<div class="modal-body">
+						<form id="custom1_lead" name="custom1_lead" enctype="multipart/form-data" class="profile_form" novalidate="novalidate" role="form" method="post">
+							<?=$this->form->pl_name?>
+                            <?=$this->form->pl_email?>
+                            <?=$this->form->pl_phone?>
+                            <button name="submitbtn" id="submitbtn" type="button" class="btn form-btn color-background btn btn-default"><?=$this->popup_btn_text?></button>
+						</form>
+					</div>					
+				</div>
+			</div>
+		</div>
+        <?php if($this->lp_id!='' && $this->page_data['lp_page_publish']!='preview'){?>
+        <script>
+			$('#submitbtn').click(function(e) {
+                if($('#custom1_lead').valid()){
+					$('#custom1_lead').submit();
+				}
+            });
+		</script>        
+        <?php }?>        

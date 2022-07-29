@@ -1,0 +1,826 @@
+<style>
+   .demothumb{min-height:225px;padding:15%;background:url(<?=HTTP_TEMPLATE_IMAGES?>/<?=$this->temp_data['pt_background']?>);background-position:center;}
+   .popover{word-wrap:break-word}
+   body.modal-open{position:fixed;}
+   .popupmodal{padding-top:4;}
+   .demothumb.dark{padding:0;}
+   .darkback{background:rgba(0,0,0,0.70);height:225px;padding:15%;margin-bottom:0;}
+   label.radio{display:inline-block;}
+   label[for="lp_phone_request"]{display:block;}label[for="lp_phone_request-0"]{margin-top:10px !important;margin-left:25px;}
+   .popover{font-weight:400 !important;font-size:16px;}
+   @media(max-with:500px){
+   ::-webkit-input-placeholder{font-size:12px !important;}
+   :-moz-placeholder{color:#a9a9a9 !important;font-size:12px !important;}
+   ::-moz-placeholder{color:#a9a9a9 !important;font-size:12px !important;}
+   :-ms-input-placeholder{font-size:12px !important;}
+   .custom-form-wrapper #submitbtn{margin-top:20px !important;}
+   }
+</style>
+<div ng-app="AgentLeadGenesis" ng-controller="AgentLeadGenesisController" class="container-fluid">
+   <div class="row">
+      <div class="col-sm-3 ">
+         <div class="custom-form-wrapper">
+            <p class="back-p" style="margin-bottom: 50px;">
+               <a href="<?php echo $this->baseUrl('landing-page-templates')?>" class="back-b btn btn-primary" style="float: left;">
+                  <i class="fas fa-arrow-left"></i>
+                  Go Back
+               </a>
+            </p>
+            <p class="cutom_group">
+            <form id="landing_pages" enctype="multipart/form-data" class="profile_form" novalidate="novalidate" role="form" method="post">
+               <input type="hidden" name="Preview" id="Preview" value="0" />
+               <?=$this->form->lp_id?>
+               <?=$this->form->lp_bg_image?>
+               <div class="bg_image text-left">
+                  <?php if(!empty($this->page_data) && !empty($this->page_data['lp_bg_image'])){?>
+                  <img src="<?=HTTP_TEMPLATE_IMAGES?>/212/<?=$this->page_data['lp_bg_image']?>" style="max-width:100%;height:100px;" alt="big-avatar" class="thumb-lg" />
+                  <?php }?>
+               </div>
+               <div class="clear">
+                  <div class="fullwidthdiv text-left"> <label>Background Image (JPG,PNG,JPEG,GIF)</label> </div>
+                  <div class="fullwidthdiv text-left">
+                     <div class="col-md-4 padding0">
+                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">  
+                           <span class="btn-success input-group-addon   btn-file" style="line-height: 29px;border:1px solid #ccc !important;border-radius: 4px !important;"> <span class="fileinput-new"><i class="fa fa-plus"></i> Upload Image</span> <span class="fileinput-exists">Change</span>
+                           <input type="file" ng-model="background" onchange="change_bg_image();"  name="lp_bg_image_upload" id="lp_bg_image_upload" class="file-upload">
+                           </span> <a href="javascript:void(1);" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> 
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div id="pic-progress" class="progress progress-sm clear" style="display:none;">
+                  <div id="pic-bar" class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"> 
+                  </div>
+               </div>
+               <div class="clear">&nbsp;</div>
+               <?=$this->form->lp_headline?>
+               <?php if($this->temp_data['pt_id']=='8'){?>
+               <?=$this->form->lp_subheadline?>
+               <?=$this->form->lp_video_link?>
+               <div class="clear" style="margin-top:-15px;text-align:left;">
+                  <small class="pull-left" ><strong>YouTube links in the form of:</strong> https://youtu.be/0K6UUEW9K5Y </small> &nbsp;<a href="#" id="hover_div"  class="pull-left" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="top"  data-content="Click on share link below the video on youtube to get the proper video link" style="float:left !important;"><span class="fa fa-question-circle" style="vertical-align:top;z-index:99999;font-size:20px;float:left"></span></a>
+                  <small class="pull-left"><strong>Vimeo links in the form of:</strong> https://player.vimeo.com/video/68082407 </small> &nbsp;<a href="#" id="hover_div"  class=" pull-left" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="top"  data-content="Click on share icon shown on the video on vimeo - Copy video link shown in Embed Code section set in iframe src" style="float:left !important"><span class="fa fa-question-circle" style="vertical-align:top;z-index:99999;font-size:20px;"></span></a>
+               </div>
+               <br />
+               <?php } if($this->temp_data['pt_id']=='10'){?>
+               <?=$this->form->lp_subheadline?>
+               <?=$this->form->lp_bullet_1?>
+               <?=$this->form->lp_bullet_2?>
+               <?=$this->form->lp_bullet_3?>
+               <?php }?>
+               <div class="clear"></div>
+               <?=$this->form->lp_button_text?>
+               <?=$this->form->lp_popup_text?>
+               <?=$this->form->lp_popup_btn_text?>
+               <?php if($this->temp_data['pt_id']=='11'){?>
+               <?=$this->form->lp_phone_request?>
+               <?php }?>
+               <h3 class="text-left">Page Settings</h3>
+               <!-- Color selector -->
+               <?=$this->form->lps_background?>
+               <div class="form-group">
+                  <label for="exampleInputEmail1">Button Color</label>
+                  <br>
+                  <span class="simplecolorpicker inline">
+                  <span class="color " title="Turquoise" style="background-color: #1abc9c;" data-color="#1abc9c" role="button" tabindex="0"></span>
+                  <span class="color" title="Emerald" style="background-color: #2ecc71;" data-color="#2ecc71" role="button" tabindex="0"></span>
+                  <span class="color" title="Peter River" style="background-color: #3498db;" data-color="#3498db" role="button" tabindex="0"></span>
+                  <span class="color" title="Amethyst" style="background-color: #9b59b6;" data-color="#9b59b6" role="button" tabindex="0"></span>
+                  <span class="color" title="Wet Asphalt" style="background-color: #34495e;" data-color="#34495e" role="button" tabindex="0"></span>
+                  <span class="color" title="Sun Flower" style="background-color: #f1c40f;" data-color="#f1c40f" role="button" tabindex="0"></span>
+                  <span class="color " title="Carrot" style="background-color: #e67e22;" data-color="#e67e22" role="button" tabindex="0"></span>
+                  <span class="color" title="Alizarin" style="background-color: #e74c3c;" data-color="#e74c3c" role="button" tabindex="0"></span>
+                  <span class="color" title="Concrete" style="background-color: #95a5a6;" data-color="#95a5a6" role="button" tabindex="0"></span>
+                  </span>
+               </div>
+               <?=$this->form->lp_redirect_link?>
+               <?=$this->form->lp_pixel_code?>
+               <a href="#" id="hover_div"  class="cu_font pull-left" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="top"  data-content="The PAGE NAME has two functions. It will be displayed to the public as a part of the URL link. Also, choosing a short, easy to remember name will help you reference the landing page in the future. Do not add any special characters or spaces to the page name. For example you might name your page 'San Diego' and it will display as <a><?=SITE_HTTP_URL?>/sandiego</a>"><span class="fa fa-question-circle" style="vertical-align:top;z-index:99999"></span></a>
+               <?=$this->form->lp_name?>
+               <div class="row">
+                <!--  <div class="col-md-6"><div class="inline-block" style="float: left"><?=$this->form->previewbtn?></div></div> -->
+                  <div class="col-md-offset-6 col-md-6">
+                     <div class="inline-block newbtn btn-alignment"><?=$this->form->submitbtn?></div>
+                  </div>
+               </div>
+            </form>
+            </p>
+         </div>
+      </div>
+      <div class="col-sm-9">
+         <div class=" text-left temp_head"> Customize <?=$this->temp_data['pt_title']?> Template</div>
+         <div class="imageshow pd-0">
+            <div class="table" <?php if(!empty($this->page_data) && !empty($this->page_data['lp_bg_image'])){ echo 'style="background:url('.HTTP_TEMPLATE_IMAGES.'/'.$this->page_data['lp_bg_image'].')"' ;}?>>
+               <div class="table-cell vertical-middle">
+                  <?php 
+                     if($this->temp_data['pt_id']=='7' || $this->temp_data['pt_id']=='9')
+                     {?>
+                  <div align="center">
+                     <div class="maxwidth">
+                        <div class="innerpage" style="background-color:transparent !important;">
+                           <div class="main_rel_div">
+                              <div class="fullwidthdiv">
+                                 <script>
+                                    setTimeout(function () {
+                                        if ($('.msgsection').length > 0) {
+                                            $('.msgsection').slideUp('slow');
+                                        }
+                                    }, (1000 * 60 * 60));
+                                 </script>
+                              </div>
+                              <div class="">
+                                 <style>
+                                    .modal-backdrop{z-index:1}
+                                    .modal{z-index:2}
+                                    .modal-dialog{margin:30px 0;}
+                                    .modal-content{padding:25px;padding-bottom:0;}
+                                    .color-background,.color-background:hover,.color-background:active,.color-background:focus{background:#e67e22 !important;}
+                                    .Preview_section{padding:25px;}
+                                    .close{margin-right:-20px;}
+                                    body.modal-open{position:fixed;}
+                                    .popupmodal{padding-top:4%;}
+                                 </style>
+                                 <div id="background-preview" class="table tableheight custom-back" style="background:url({{localhost}}/public/resources/page_templates/1522822805_Depositphotos_7589448_l-2015.jpg)">
+                                    <div class="table-cell vertical-middle">
+                                       <div class="inner-form">
+                                          <div class="desc">
+                                             {{headline}}
+                                          </div>
+                                          <button ng-style="button_color_obj" type="button" id="text_2" class="btn form-btn color-background" data-toggle="modal" data-target="#myModal">
+                                          {{button_text}}
+                                          </button>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!---Modal content--->
+                                 <div class="modal fade bs-example-modal-lg popupmodal" data-backdrop="static" id="myModal" role="dialog"
+                                    aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                       <div class="modal-content">
+                                          <div class="modal-header">
+                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:-20px !important;">
+                                             <span aria-hidden="true">×</span>
+                                             </button>
+                                             <h4 class="editable_popup-headline modal-title" id="text_3">
+                                                {{popup_headline}}
+                                             </h4>
+                                             <br>
+                                          </div>
+                                          <div class="modal-body">
+                                             <form id="custom1_lead" name="custom1_lead" enctype="multipart/form-data" class="profile_form"
+                                                novalidate="novalidate" role="form" method="post">
+                                                <div class=" form-group ">
+                                                   <input type="text" name="pl_name" id="pl_name" value="" class="form-control required"
+                                                      placeholder="Full Name" aria-required="true">
+                                                </div>
+                                                <div class=" form-group ">
+                                                   <input type="text" name="pl_email" id="pl_email" value="" class="form-control email required"
+                                                      placeholder="Email Address" aria-required="true">
+                                                </div>
+                                                <button name="submitbtn" ng-style="button_color_obj" id="submitbtn" type="button" class="btn form-btn color-background btn btn-default">
+                                                {{popup_button_text}}
+                                                </button>
+                                             </form>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <?php }
+                     else if($this->temp_data['pt_id']=='8')
+                     {?>
+                  <div align="center">
+                     <div class="maxwidth">
+                        <div class="innerpage" style="background-color:transparent !important;">
+                           <div class="main_rel_div">
+                              <div class="fullwidthdiv">
+                                 <script>
+                                    setTimeout(function () {
+                                        if ($('.msgsection').length > 0) {
+                                            $('.msgsection').slideUp('slow');
+                                        }
+                                    }, (1000 * 60 * 60));
+                                 </script>
+                              </div>
+                              <div class="">
+                                 <style>
+                                    .modal-backdrop{z-index:1}
+                                    .modal{z-index:2}
+                                    .modal-dialog{margin:30px 0;}
+                                    .modal-content{padding:25px;padding-bottom:0;}
+                                    .color-background,.color-background:hover,.color-background:active,.color-background:focus{background:#e67e22 !important;}
+                                    .Preview_section{padding:25px;}
+                                    .close{margin-right:-20px;}
+                                    #video1{max-width:90%;margin:0 auto;background:#000;}
+                                    body.modal-open{position:fixed;}
+                                    .popupmodal{padding-top:4%;}
+                                 </style>
+                                 <link href="//vjs.zencdn.net/4.9.0/video-js.css" rel="stylesheet">
+                                 <div id="background-preview" class="table tableheight custom-back" style="background:url({{localhost}}/public/resources/page_templates/1522822615_Depositphotos_8682607_l-2015.jpg)">
+                                    <div class="table-cell vertical-middle">
+                                       <div class="inner-form">
+                                          <div class="desc">
+                                             {{headline}}
+                                          </div>
+                                          <h4>{{sub_headline}}</h4>
+                                          <div class="video_div clear" id="video_div">
+                                             <video id="video2" preload="none" controls="" class="vjs-tech" src="{{vide_link}}"
+                                                width="500" height="315">
+                                                <object autoplay="false" name="html5_video_fallback" style="width:100%;" class="leanback-player-flash-fallback"
+                                                   id="html5_video_fallback" type="application/x-shockwave-flash" data="{{vide_link}}"
+                                                   width="100%" height="100%">
+                                                   <param name="movie" value="{{vide_link}}">
+                                                   <param name="allowfullscreen" value="true">
+                                                   <param name="allowscriptaccess" value="always">
+                                                   <param name="wmode" value="transparent">
+                                                   <param name="aspectratio" value="16:9">
+                                                   <param name="flashvars" value="autostart=false&amp;controlbar=true&amp;controls=true&amp;file={{vide_link}}">
+                                                </object>
+                                             </video>
+                                          </div>
+                                          <button type="button" id="text_2" class="btn form-btn color-background" data-toggle="modal"
+                                             data-target="#myModal">{{button_text}}</button>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!---Modal content--->
+                                 <div class="modal fade bs-example-modal-lg popupmodal" data-backdrop="static" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                       <div class="modal-content">
+                                          <div class="modal-header">
+                                             <button type="button" id="modal_close" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:-20px !important;">
+                                             <span aria-hidden="true">×</span>
+                                             </button>
+                                             <h4 class="editable_popup-headline modal-title" id="text_3">
+                                                {{popup_headline}}
+                                             </h4>
+                                             <br>
+                                          </div>
+                                          <div class="modal-body">
+                                             <form id="custom1_lead" name="custom1_lead" enctype="multipart/form-data" class="profile_form" novalidate="novalidate" role="form" method="post">
+                                                <div class=" form-group ">
+                                                   <input type="text" name="pl_name" id="pl_name" value="" class="form-control required" placeholder="Full Name" aria-required="true">
+                                                </div>
+                                                <div class=" form-group ">
+                                                   <input type="text" name="pl_email" id="pl_email" value="" class="form-control email required" placeholder="Email Address" aria-required="true">
+                                                </div>
+                                                <div class=" form-group ">
+                                                   <input type="text" name="pl_phone" id="pl_phone" value="" class="form-control required" placeholder="Enter Phone Number" aria-required="true">
+                                                </div>
+                                                <button name="submitbtn" id="submitbtn" type="button" class="btn form-btn color-background btn btn-default">
+                                                {{popup_button_text}}
+                                                </button>
+                                             </form>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <script>
+                                    var playVideo = function (element) {
+                                        var iframe = element.querySelector('iframe');
+                                        var video = element.querySelector('video');
+                                        if (video !== null) {
+                                            video.play();
+                                        }
+                                    };
+                                    var pauseVideo = function (element) {
+                                        var iframe = element.querySelector('iframe');
+                                        var video = element.querySelector('video');
+                                    
+                                        if (video !== null) {
+                                            video.pause();
+                                        }
+                                    };
+                                    $('#text_2').click(function (e) {
+                                        domCarousel = document.getElementById('video_div');
+                                        setTimeout(function (e) {
+                                            pauseVideo(domCarousel);
+                                        }, 200);
+                                    });
+                                    $('.close').click(function (e) {
+                                        domCarousel = document.getElementById('video_div');
+                                        setTimeout(function (e) {
+                                            playVideo(domCarousel);
+                                        }, 200);
+                                    });
+                                    $(window).bind("load", function () {
+                                        domCarousel = document.getElementById('video_div');
+                                        playVideo(domCarousel);
+                                    });
+                                 </script>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <?php }
+                     else if($this->temp_data['pt_id']=='10')
+                     {?>
+                  <div align="center">
+                     <div class="maxwidth">
+                        <div class="innerpage" style="background-color:transparent !important;">
+                           <div class="main_rel_div">
+                              <div class="fullwidthdiv">
+                                 <script>
+                                    setTimeout(function () {
+                                        if ($('.msgsection').length > 0) {
+                                            $('.msgsection').slideUp('slow');
+                                        }
+                                    }, (1000 * 60 * 60));
+                                 </script>
+                              </div>
+                              <div class="">
+                                 <style>
+                                    .modal-backdrop{z-index:1}
+                                    .modal{z-index:2}
+                                    .modal-dialog{margin:30px 0;}
+                                    .modal-content{padding:25px;padding-bottom:0;}
+                                    .color-background,.color-background:hover,.color-background:active,.color-background:focus{background:#e67e22 !important;}
+                                    .Preview_section{padding:25px;}
+                                    .close{margin-right:-20px;}
+                                    .bullet_points li:before{
+                                    font-family: 'FontAwesome';
+                                    content: '\f00c';
+                                    margin: 0 5px 0 -15px;
+                                    color: #fff;}
+                                    .bullet_points{list-style:none;text-align:left;padding-left:20%;}
+                                    .bullet_points li{margin-bottom:12px;font-weight:500;font-size: 18px;text-transform:capitalize;}
+                                    body.modal-open{position:fixed;}
+                                    .popupmodal{padding-top:4%;}.inner-form h3,.desc{margin-bottom:20px;}
+                                 </style>
+                                 <div id="background-preview" class="table tableheight custom-back" style="background:url({{localhost}}/public/resources/page_templates/1522822377_Depositphotos_78507890_l-2015.jpg)">
+                                    <div class="table-cell vertical-middle">
+                                       <div class="inner-form">
+                                          <div class="desc">
+                                             <b>{{headline}}</b>
+                                          </div>
+                                          <h3>{{sub_headline}}</h3>
+                                          <ul class="bullet_points">
+                                             <li>{{bullet_point_1}}</li>
+                                             <li>{{bullet_point_2}}</li>
+                                             <li>{{bullet_point_3}}</li>
+                                          </ul>
+                                          <button type="button" id="text_2" class="btn form-btn color-background" data-toggle="modal"
+                                             data-target="#myModal">
+                                          {{button_text}}    
+                                          </button>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!---Modal content--->
+                                 <div class="modal fade bs-example-modal-lg popupmodal" data-backdrop="static" id="myModal" role="dialog"
+                                    aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                       <div class="modal-content">
+                                          <div class="modal-header">
+                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:-20px !important;">
+                                             <span aria-hidden="true">×</span>
+                                             </button>
+                                             <h4 class="editable_popup-headline modal-title" id="text_3">
+                                                {{popup_headline}}
+                                             </h4>
+                                             <br>
+                                          </div>
+                                          <div class="modal-body">
+                                             <form id="custom1_lead" name="custom1_lead" enctype="multipart/form-data" class="profile_form"
+                                                novalidate="novalidate" role="form" method="post">
+                                                <div class=" form-group ">
+                                                   <input type="text" name="pl_name" id="pl_name" value="" class="form-control required"
+                                                      placeholder="Full Name" aria-required="true">
+                                                </div>
+                                                <div class=" form-group ">
+                                                   <input type="text" name="pl_email" id="pl_email" value="" class="form-control email required"
+                                                      placeholder="Email Address" aria-required="true">
+                                                </div>
+                                                <div class=" form-group ">
+                                                   <input type="text" name="pl_phone" id="pl_phone" value="" class="form-control required"
+                                                      placeholder="Enter Phone Number" aria-required="true">
+                                                </div>
+                                                <button
+                                                   name="submitbtn" id="submitbtn" type="button" class="btn form-btn color-background btn btn-default">
+                                                {{popup_button_text}}
+                                                </button>
+                                             </form>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <?php }
+                     else if($this->temp_data['pt_id']=='11')
+                     {?>
+                  <div align="center">
+                     <div class="maxwidth">
+                        <div class="innerpage" style="background-color:transparent !important;">
+                           <div class="main_rel_div">
+                              <div class="fullwidthdiv">
+                                 <script>
+                                    setTimeout(function () {
+                                        if ($('.msgsection').length > 0) {
+                                            $('.msgsection').slideUp('slow');
+                                        }
+                                    }, (1000 * 60 * 60));
+                                 </script>
+                              </div>
+                              <div class="">
+                                 <style>
+                                    .modal-backdrop{z-index:1}
+                                    .modal{z-index:2}
+                                    .modal-dialog{margin:30px 0;}
+                                    .modal-content{padding:25px;padding-bottom:0;}
+                                    .color-background,.color-background:hover,.color-background:active,.color-background:focus{background:#e67e22 !important;}
+                                    .Preview_section{padding:25px;}
+                                    .close{margin-right:-20px;}
+                                    body.modal-open{position:fixed;}
+                                    .popupmodal{padding-top:4%;}
+                                 </style>
+                                 <div id="background-preview" class="table tableheight custom-back" style="background:url({{localhost}}/public/resources/page_templates/1526707368_newtemp.jpg)">
+                                    <div class="table-cell vertical-middle">
+                                       <div class="inner-form">
+                                          <div class="desc">
+                                             {{headline}}
+                                          </div>
+                                          <button type="button" id="text_2" class="btn form-btn color-background" data-toggle="modal"
+                                             data-target="#myModal">
+                                          {{button_text}}
+                                          </button>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!---Modal content--->
+                                 <div class="modal fade bs-example-modal-lg popupmodal" data-backdrop="static" id="myModal" role="dialog"
+                                    aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                       <div class="modal-content">
+                                          <div class="modal-header">
+                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:-20px !important;">
+                                             <span aria-hidden="true">×</span>
+                                             </button>
+                                             <h4 class="editable_popup-headline modal-title" id="text_3">
+                                                {{popup_headline}}
+                                             </h4>
+                                             <br>
+                                          </div>
+                                          <div class="modal-body">
+                                             <form id="custom1_lead" name="custom1_lead" enctype="multipart/form-data" class="profile_form"
+                                                novalidate="novalidate" role="form" method="post">
+                                                <div class=" form-group ">
+                                                   <input type="text" name="pl_name" id="pl_name" value="" class="form-control required"
+                                                      placeholder="Full Name" aria-required="true">
+                                                </div>
+                                                <div class=" form-group ">
+                                                   <input type="text" name="pl_email" id="pl_email" value="" class="form-control email required"
+                                                      placeholder="Email Address" aria-required="true">
+                                                </div>
+                                                <div class=" form-group ">
+                                                   <input type="text" name="pl_address" id="pl_address" value="" class="form-control required"
+                                                      placeholder="Enter Address" aria-required="true">
+                                                </div>
+                                                <div id="request_number" style="display:none;" class="form-group">
+                                                   <input type="text" name="pl_phone" id="pl_phone" value="" class="form-control required"
+                                                      placeholder="Enter Phone Number" aria-required="true">
+                                                </div>
+                                                <button name="submitbtn" id="submitbtn" type="button" class="btn form-btn color-background btn btn-default">
+                                                {{popup_button_text}}
+                                                </button>
+                                             </form>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <br>
+                        </div>
+                     </div>
+                  </div>
+                  <?php }?>
+               </div>
+            </div>
+         </div>
+         <div class="imageshow">
+         </div>
+      </div>
+      <div>&nbsp;</div>
+   </div>
+</div>
+<script>
+   var AVTBIGURL='<?=HTTP_TEMPLATE_IMAGES?>';
+   $(document).ready(function(e) {
+    $('#hover_div').insertBefore($('#lp_url'));
+          $('[data-toggle="popover"]').popover({});  
+       $('.simplecolorpicker span[data-color="<?=$this->btn_color?>"]').addClass('color-select');
+      });
+   //color picker and selector
+      $( ".color" ).click(function() {
+          $(".color").removeClass("color-select")
+          $( this ).addClass("color-select");
+          $('#lps_background').val($( this ).attr('data-color'));
+   
+          // preview work
+          $("style").append(`.desc ~ #text_2{background-color:`+$(this).attr('data-color') + ' !important'+`}`);
+          $("style").append(`form > #submitbtn{background-color:`+$(this).attr('data-color') + ' !important'+`}`);
+          
+          // $('#text_2').css("background",$( this ).attr('data-color') , " !important");
+          // $('#submitbtn').css("background",$( this ).attr('data-color') , " !important");
+      });
+      $('#previewbtn').click(function(e) {
+          if($('#landing_pages').valid()){
+              if($('#lps_background').val()==''){
+                  $('#lps_background').val($('.simplecolorpicker .color-select').attr('data-color'));
+              }
+              $('#Preview').val('1');
+              $('#landing_pages').submit();
+          }
+      });
+      $('#submitbtn').click(function(e) {
+          if($('#lps_background').val()==''){
+              $('#lps_background').val($('.simplecolorpicker .color-select').attr('data-color'));
+          }
+          if($('#landing_pages').valid()){
+              $('#landing_pages').submit();
+          }
+      });
+      $('.custom-form-wrapper input').focus(function(e) {
+          $(this).removeAttr('placeholder');
+      });
+</script>
+<!-- angularjs script -->
+<script>
+   // AgentLeadGenesis Angular Controller 
+   $(document).ready(function(e) {
+    var app = angular.module('AgentLeadGenesis', ['ngFileUpload']); 
+   
+          $( document ).ajaxSuccess(function( event, xhr, settings ) {
+              document.getElementById("background-preview").style.backgroundImage = "url(" + $(".thumb-lg").attr('src').replace("/212","") + ")";
+          });
+   
+          $("input[name='lp_phone_request']").change(()=>{
+              if($("input[name='lp_phone_request']:checked").val() == "1"){
+                  $("#request_number").css("display","");
+              }
+              else{
+                  $("#request_number").css("display","none");
+              }
+          });
+   
+          switch(<?php echo $this->temp_data['pt_id']; ?>){
+              case 7:
+              case 9:
+            app.controller('AgentLeadGenesisController', function(Upload,$scope) {
+                $scope.headline = "Insert your headline text here."; 
+                $scope.button_text = "Insert your button text here."; 
+                $scope.popup_headline = "Insert your popup headline text here.";
+                $scope.popup_button_text = "Insert_popup_button_text";
+                      $scope.button_color = "";
+                      
+                      $scope.localhost = (window.location.hostname != "localhost")?'':'http://localhost/agentleads';
+                      $scope.button_color_obj = {"background":"#e67e22"};
+   
+                      $scope.$watch(function(){
+                           $scope.button_color_obj["background"] = $scope.button_color = $('#lps_background').val();
+                      });
+   
+                      $scope.background = "";
+                      
+                      $scope.headline_disappear = true; 
+                      $scope.onFocusHeadline = ()=>{
+                          if ($scope.headline_disappear){
+                              $scope.headline = ""; 
+                              $scope.headline_disappear = false; 
+                          }
+                      }
+                      $scope.button_text_disappear = true; 
+                      $scope.onFocusButtonText = ()=>{
+                          if ($scope.button_text_disappear){
+                              $scope.button_text = ""; 
+                              $scope.button_text_disappear = false; 
+                          }
+                      }
+                      $scope.popup_headline_disappear = true; 
+                      $scope.onFocusPopup = ()=>{
+                          if ($scope.popup_headline_disappear){
+                              $scope.popup_headline = ""; 
+                              $scope.popup_headline_disappear = false; 
+                          }
+                      }
+                      $scope.popup_button_text_disappear = true; 
+                      $scope.onFocusPopupButtonText = ()=>{
+                          if ($scope.popup_button_text_disappear){
+                              $scope.popup_button_text = ""; 
+                              $scope.popup_button_text_disappear = false; 
+                          }
+                      }
+            });  
+        break;
+        case 8: 
+           app.controller('AgentLeadGenesisController', function($scope) {
+                $scope.headline = "Insert your headline text here."; 
+                      $scope.sub_headline = "Insert your subheadline text here.";
+                      
+                      $scope.localhost = (window.location.hostname != "localhost")?'':'http://localhost/agentleads';
+                
+                $scope.vide_link = $scope.localhost + "/public/img/HypeVideo.mp4"; 
+                $scope.button_text = "Insert your button text here.";
+                $scope.popup_headline = "Insert your popup headline text here.";
+                $scope.popup_button_text = "Insert your popup button text here.";
+                      
+                       $scope.button_color = "";
+   
+                      $scope.background = "";
+                      
+                      $scope.headline_disappear = true; 
+                      $scope.onFocusHeadline = ()=>{
+                          if ($scope.headline_disappear){
+                              $scope.headline = ""; 
+                              $scope.headline_disappear = false; 
+                          }
+                      }
+                      $scope.sub_headline_disappear = true; 
+                      $scope.onFocusSubHeadline = ()=>{
+                          if ($scope.sub_headline_disappear){
+                              $scope.sub_headline = ""; 
+                              $scope.sub_headline_disappear = false; 
+                          }
+                      }
+                      $scope.vide_link_disappear = true; 
+                      $scope.onFocusVideoLink = ()=>{
+                          if ($scope.vide_link_disappear){
+                              $scope.vide_link = ""; 
+                              $scope.vide_link_disappear = false; 
+                          }
+                      }
+                      $scope.button_text_disappear = true; 
+                      $scope.onFocusButtonText = ()=>{
+                          if ($scope.button_text_disappear){
+                              $scope.button_text = ""; 
+                              $scope.button_text_disappear = false; 
+                          }
+                      }
+                      $scope.popup_headline_disappear = true; 
+                      $scope.onFocusPopup = ()=>{
+                          if ($scope.popup_headline_disappear){
+                              $scope.popup_headline = ""; 
+                              $scope.popup_headline_disappear = false; 
+                          }
+                      }
+                      $scope.popup_button_text_disappear = true; 
+                      $scope.onFocusPopupButtonText = ()=>{
+                          if ($scope.popup_button_text_disappear){
+                              $scope.popup_button_text = ""; 
+                              $scope.popup_button_text_disappear = false; 
+                          }
+                      }
+   
+            }); 
+        break 
+        case 10:
+           app.controller('AgentLeadGenesisController', function($scope) {
+                $scope.headline = "Insert your headline text here."; 
+                $scope.sub_headline = "Insert your subheadline text here."; 
+                $scope.bullet_point_1 = "Bullet point text 1 goes here"; 
+                $scope.bullet_point_2 = "Bullet point text 2 goes here"; 
+                $scope.bullet_point_3 = "Bullet point text 3 goes here";
+                      
+                      $scope.localhost = (window.location.hostname != "localhost")?'':'http://localhost/agentleads'; 
+   
+                $scope.button_text = "Insert your button text here.";
+                $scope.popup_headline = "Insert your popup headline text here.";
+                $scope.popup_button_text = "Insert your popup button text here.";
+                $scope.button_color = "";
+                
+                      $scope.background = "";
+                      
+   
+                      $scope.headline_disappear = true; 
+                      $scope.onFocusHeadline = ()=>{
+                          if ($scope.headline_disappear){
+                              $scope.headline = ""; 
+                              $scope.headline_disappear = false; 
+                          }
+                      }
+                      $scope.sub_headline_disappear = true; 
+                      $scope.onFocusSubHeadline = ()=>{
+                          if ($scope.sub_headline_disappear){
+                              $scope.sub_headline = ""; 
+                              $scope.sub_headline_disappear = false; 
+                          }
+                      }
+                      $scope.bullet_point_1_disappear = true; 
+                      $scope.onFocusBulletPoint1 = ()=>{
+                          if ($scope.bullet_point_1_disappear){
+                              $scope.bullet_point_1 = ""; 
+                              $scope.bullet_point_1_disappear = false; 
+                          }
+                      }
+                      $scope.bullet_point_2_disappear = true; 
+                      $scope.onFocusBulletPoint2 = ()=>{
+                          if ($scope.bullet_point_2_disappear){
+                              $scope.bullet_point_2 = ""; 
+                              $scope.bullet_point_2_disappear = false; 
+                          }
+                      }
+                      $scope.bullet_point_3_disappear = true; 
+                      $scope.onFocusBulletPoint3 = ()=>{
+                          if ($scope.bullet_point_3_disappear){
+                              $scope.bullet_point_3 = ""; 
+                              $scope.bullet_point_3_disappear = false; 
+                          }
+                      }
+                      $scope.button_text_disappear = true; 
+                      $scope.onFocusButtonText = ()=>{
+                          if ($scope.button_text_disappear){
+                              $scope.button_text = ""; 
+                              $scope.button_text_disappear = false; 
+                          }
+                      }
+                      $scope.popup_headline_disappear = true; 
+                      $scope.onFocusPopup = ()=>{
+                          if ($scope.popup_headline_disappear){
+                              $scope.popup_headline = ""; 
+                              $scope.popup_headline_disappear = false; 
+                          }
+                      }
+                      $scope.popup_button_text_disappear = true; 
+                      $scope.onFocusPopupButtonText = ()=>{
+                          if ($scope.popup_button_text_disappear){
+                              $scope.popup_button_text = ""; 
+                              $scope.popup_button_text_disappear = false; 
+                          }
+                      }
+   
+            }); 
+        break;
+        case 11:
+           app.controller('AgentLeadGenesisController', function($scope) {
+                $scope.headline = "Insert your headline text here."; 
+                $scope.button_text = "Insert your button text here."; 
+                $scope.popup_headline = "Insert your popup headline text here.";
+                $scope.popup_button_text = "Insert your popup button text here.";
+                $scope.request_number = false;
+                $scope.button_color = "";
+                      
+                      $scope.localhost = (window.location.hostname != "localhost")?'':'http://localhost/agentleads';
+   
+                      $scope.background = "";
+                      
+                      
+                      $scope.headline_disappear = true; 
+                      $scope.onFocusHeadline = ()=>{
+                          if ($scope.headline_disappear){
+                              $scope.headline = ""; 
+                              $scope.headline_disappear = false; 
+                          }
+                      }
+                      $scope.button_text_disappear = true; 
+                      $scope.onFocusButtonText = ()=>{
+                          if ($scope.button_text_disappear){
+                              $scope.button_text = ""; 
+                              $scope.button_text_disappear = false; 
+                          }
+                      }
+                      $scope.popup_headline_disappear = true; 
+                      $scope.onFocusPopup = ()=>{
+                          if ($scope.popup_headline_disappear){
+                              $scope.popup_headline = ""; 
+                              $scope.popup_headline_disappear = false; 
+                          }
+                      }
+                      $scope.popup_button_text_disappear = true; 
+                      $scope.onFocusPopupButtonText = ()=>{
+                          if ($scope.popup_button_text_disappear){
+                              $scope.popup_button_text = ""; 
+                              $scope.popup_button_text_disappear = false; 
+                          }
+                      }
+            }); 
+        break; 
+        default: 
+            // do nothing
+        break; 
+          }
+   
+    if (window.location.hostname != "localhost"){
+        $('img').each(function(){
+                  repl = $(this).attr("src").replace("http://localhost/agentleads/","");
+            $(this).attr("src", repl );
+        })
+        $('video').each(function(){
+            repl = $(this).attr("src").replace("http://localhost/agentleads/","");
+            $(this).attr("src", repl );
+        })
+        $('param[name=flashvars]').each(function(){
+            repl = $(this).attr("value").replace("http://localhost/agentleads/","");
+            $(this).attr("value", repl );
+              })
+          }
+   });
+</script>

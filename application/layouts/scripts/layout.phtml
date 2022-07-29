@@ -1,0 +1,182 @@
+<?php echo $this->docType("HTML5");?>
+<html lang="en">
+<head>
+<?php 
+	echo $this->headMeta()."\n"; 
+	echo $this->headTitle()."\n";
+	echo $this->headLink()."\n";
+	global $myActionName,$myControllerName,$myModuleName;
+	$myControllerName=Zend_Controller_Front::getInstance()->getRequest()->getControllerName();	
+	$myActionName=Zend_Controller_Front::getInstance()->getRequest()->getActionName();
+	$myModuleName=Zend_Controller_Front::getInstance()->getRequest()->getModuleName();
+	global $is_mobile;
+?>
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="<?php echo $this->baseUrl()?>/public/front_js/html5shiv.js"></script>
+  <script src="<?php echo $this->baseUrl()?>/public/front_js/respond.min.js"></script>
+<![endif]-->
+	
+<script src="<?php echo $this->baseUrl('public/plugins/jquery-1.11.0.min.js')?>"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script>var baseUrl = SITEURL = SITE_URL = '<?php echo $this->baseUrl()?>';</script>
+<script>
+var controller='<?=$myControllerName?>';
+var action='<?=$myActionName?>';
+var module='<?=$myModuleName?>';
+</script>	
+
+<script>
+$(window).load(function(e) {
+	$('#wrap').hide();
+});
+</script>
+<!-- Start of agentleadgenesis Zendesk Widget script -->
+<?php /*?><script>window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(e){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var e=this.createElement("script");n&&(this.domain=n),e.id="js-iframe-async",e.src="https://assets.zendesk.com/embeddable_framework/main.js",this.t=+new Date,this.zendeskHost="agentleadgenesis.zendesk.com",this.zEQueue=a,this.body.appendChild(e)},o.write('<body onload="document._l();">'),o.close()}();</script><?php */?>
+<!-- End of agentleadgenesis Zendesk Widget script -->
+<?php /*?><script>
+zE(function() {
+  zE.hide();
+}); 
+</script><?php */?>
+</head>
+<?php
+if($myControllerName=='user' and ($myActionName=="login" or $myActionName=="register" or $myActionName=="forgotpassword" or  $myActionName=="resetpassword") )
+{
+	$class="body_bg";
+}
+else if($myControllerName=='homevalution')
+{
+	$class="homevalution";
+}
+else
+{
+	$class="";
+}
+
+?>
+
+<body class="<?=$class?>">
+	
+<div id="wrap" class="text-center" style=" background-color:#006aff; <?php /*?>background-color: rgba(66,184,212,0.9);<?php */?>">
+  
+    <div class="scene text-center">
+    		<img src="<?=HTTP_SITE_IMAGES?>/loader.GIF" alt="loader" />
+      	<em>LOADING<span class="one">.</span><span class="two">.</span><span class="three">.</span></em>
+    </div>
+</div>
+
+	<?php if($class!='body_bg') {?>
+    <?php if($myActionName!='pricing'){ ?>
+	<?php echo $this->render('header.phtml'); ?>
+    <?php } ?>
+    
+    <?php }?>
+	<!--========================================== //End PROJECT-NAME Menu Section-->
+	<?php if(($myControllerName=='blog') || ($myControllerName=="static" && $myActionName=="faq") || ($myControllerName=="static" && $myActionName=="tutorial")){ ?>
+	<?php echo $this->render("sub_home_slider.phtml");?>
+    <?php } ?>
+	
+  	<div align="center">
+		<div class="maxwidth">
+		
+				<?php 
+				if(($myControllerName=='index' && ($myActionName=='index' or $myActionName=='pricing')) or ($myControllerName=='job' && $myActionName=='viewjob') or ($myControllerName=='user' ) or ($myControllerName=='static' ) or ($myControllerName=='error' ))
+				{
+					?>
+                    <div class="container"><?php echo $this->getHelper('Messages')->getMessages();?> </div>
+ 					<?php echo $this->render("sub_show_messages.phtml");?>
+                   
+                        <?php
+								echo $this->layout()->content;	
+								
+						?>
+                 <?php	
+				
+				}
+				else if($myControllerName=='blog')
+				{
+					?>
+                     <div class="container"><?php echo $this->getHelper('Messages')->getMessages();?> 
+ 					<?php echo $this->render("sub_show_messages.phtml");?>
+                   
+                        <?php
+								echo $this->layout()->content;	
+								
+						?>
+                        </div>
+                    <?php
+				}
+				else
+				{
+					?>
+                   <div class="innerpage">
+                  	
+                        <div class="">
+                            <div class="fullwidthdiv"><?php echo $this->getHelper('Messages')->getMessages();?> </div>
+                            <?php echo $this->render("sub_show_messages.phtml");?>
+                        <br/>
+                        	<div class="fullwidthdiv row-offcanvas row-offcanvas-left">
+
+								<?php if(isset($this->user->user_id) && $this->user->user_id!='' ) {
+									
+								 if($myActionName!='customadd'){
+								?>
+                                <div class="col-sm-5 col-md-3" id="sidebar" role="navigation" >
+                                  <?php echo $this->render("_profile_side_bar.phtml");?>
+                                </div>
+                                <?php }} ?>
+                            
+                                <div class="<?php if(isset($this->user->user_id) && $this->user->user_id!='' ) { if($myActionName!='customadd'){ ?>col-sm-7 col-md-9<?php } else { ?>col-sm-12 col-md-12<?php }} ?>">
+                                <?php echo $this->layout()->content?>
+                            	</div>
+                            
+                            </div>
+                            
+                        </div>
+                        <br/>
+                    </div>
+                    <?php	
+				}
+				?>
+	
+				
+			</div>
+		</div>
+	</div>
+	
+ 	
+	<!--========================================== //End PROJECT-NAME Layout Section-->
+	
+	<?php //echo $this->render("sub_full_map.phtml");?>
+	
+<?php /*?>	<?php echo $this->render("sub_home_footer_top.phtml");?>
+	
+	<?php echo $this->render("sub_signup_social_buttons.phtml");?><?php */?>
+ 	<?php if($class!='body_bg') { ?>
+	<?php echo $this->render('footer.phtml'); } ?>
+	<!--========================================== //End PROJECT-NAME Footer Section-->
+	
+    
+	<?php echo $this->headScript();?>
+	<?php if($myControllerName=='index' && $myActionName=='index'){?>
+    <script>jwplayer.key="zJa0pCGDfS87uTnsZyLGLX/OByqD766/C6qKcA==";</script>
+    <?php }?>
+
+  </body>
+<?php /*?>  <button onClick="zE.activate({hideOnClose: true});">Help Me!</button><?php */?>
+
+<script type="text/javascript" src="http://assets.freshdesk.com/widget/freshwidget.js"></script>
+<?php
+if($is_mobile!='1'){
+?>
+<script type="text/javascript">
+FreshWidget.init("", {"queryString": "&widgetType=popup&formTitle=Help+%26+Support&submitTitle=Submit+a+Request&submitThanks=Thank+you!+Your+request+has+been+submitted.&searchArea=no&responsive=no", "utf8": "✓", "widgetType": "popup", "buttonType": "text", "buttonText": "Support", "buttonColor": "black", "buttonBg": "#FF24EA", "alignment": "2", "offset": "475px", "submitThanks": "Thank you! Your request has been submitted.", "formHeight": "500px", "responsive": "no", "url": "https://agentleadgenesis.freshdesk.com"} );
+</script>
+<?php } else { ?>
+<script type="text/javascript">
+FreshWidget.init("", {"queryString": "&widgetType=popup&submitTitle=Submit+a+Request&submitThanks=Your+Request+Has+Been+Submitted&screenshot=no&searchArea=no", "utf8": "✓", "widgetType": "popup", "buttonType": "text", "buttonText": "Support", "buttonColor": "black", "buttonBg": "#FF24EA", "alignment": "4", "offset": "235px", "submitThanks": "Your Request Has Been Submitted", "formHeight": "500px", "screenshot": "no", "url": "https://agentleadgenesis.freshdesk.com"} );
+</script>
+<?php }?>
+</html>

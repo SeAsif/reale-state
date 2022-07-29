@@ -1,0 +1,132 @@
+<img src="<?=HTTP_TEMPLATE_IMAGES?>/<?=$this->share_image?>" class="hide" />
+
+<div class="lead_magent lead_magent2 sellerlead_magent text-center">
+<div class="main_div_lines hidden-xs">
+  <div class="left_line"> &nbsp;</div>
+  <div class=" right_line">&nbsp; </div>
+ </div> 
+  <div class="row">
+  <div class="col-xs-1 visible-xs"></div>
+    <div class="col-md-10 col-sm-10 col-md-10 col-xs-12 col-md-offset-1 col-sm-offset-1"> 
+    
+    	<div class="row home_div">
+        
+        	<div class="col-md-12 buyhome overflow">Looking To Sell Soon?</div>
+            <div class="col-md-12 buytitle overflow sellerleadgreen_title">GET 5 PROVEN TIPS TO SELL YOUR <?=$this->title?> HOME FOR TOP DOLLAR</div>
+            <div class="col-md-12 buyhome buyhome_blue overflow hint_new_class">HINT: THEY ARE EASIER THAN YOU THINK</div>
+             <div class="overflow home"><?=$this->form?></div>
+            
+        </div>
+    
+    </div>
+    <div class="col-xs-1 visible-xs"></div>
+  </div>
+</div>
+<?php if(empty($this->pop_ip_data)) {?>
+<div class="modal fade bs-example-modal-lg popupmodal" data-backdrop="static" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close exitpopup"  data-dismiss="modal"  aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+       	<div class="fullwidthdiv">
+        	<div class="row">
+            	<div class="col-md-8 col-sm-12 text-center custom8width">
+                    <p class="inner_txt inner_txt_seller">
+                    	<span class="sellermistake1">DONT LEAVE EMPTY HANDED!</span>
+                        <br />
+                       <span class="sellermistake2">GET YOUR 5 PROVEN TIPS</span>
+                        <br />
+                       <span class="sellermistake3">TO SELL YOUR HOME FOR MORE</span>
+                        <br />
+                      <span class="buyermistake4">CHEAT SHEET</span>
+                    </p>
+                </div>
+                <div class="col-md-4 col-sm-12 custom4width text-center">
+                	<img  class="img-responsive" src="<?=HTTP_SITE_IMAGES?>/seller_mis.png" alt="mistakes" />
+                </div>
+            </div>
+            <div class="row">
+            	<div class="strike">
+    				<span><img  class="img-responsive" src="<?=HTTP_SITE_IMAGES?>/hr_arrow.png" alt="report" /></span>
+				</div>
+            </div>
+             <div class="row">
+             	<div class="col-md-6 col-sm-6 text-center fullwidth">
+                	<div name="yes  " id="submit_popup" class="yes" >
+                	<span>YES</span>
+					<span class="span1 changefont1">I want to make big bucks!</span>
+                </div>
+                <img  class="img-responsive" src="<?=HTTP_SITE_IMAGES?>/shadow.png" alt="shadow" />
+                </div>
+                <div class="col-md-6 col-sm-6 text-center">
+                	<div name="no" id="no" class="no exitpopup"  data-dismiss="modal"  >
+                	<span>NO</span>
+				<span class="span1 changefont1">I dont need more money</span>
+                </div>
+                 <img class="img-responsive"  src="<?=HTTP_SITE_IMAGES?>/shadow.png" alt="shadow" />
+                </div>
+            	
+                
+            </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<?php }?>
+<script>
+$(document).ready(function(e) {
+	var lp_id='<?=$this->lp_id?>';
+	$('.home form').attr('name','home_form');
+	lp_id=$.trim(lp_id);
+	if(lp_id=='')
+	{
+		$('button').attr('disabled','disabled');
+	}
+	
+	updateSize(); 
+	
+});
+
+	$(window).resize(function(e) {
+		if($(window).width()!=1024)
+        updateSize();
+    });
+	
+	$('#submit_popup').click(function(e) {
+    
+			document.home_form.submit();
+			
+    });
+	
+</script> 
+<script type="text/javascript">
+var closed_var='0';
+$(window).load(function(e) {
+		$(document).mousemove(function(e) {
+			if(e.pageY <= 5)
+			{
+				// Show the exit popup
+				<?php if(empty($this->pop_ip_data)) {?>
+					var lp_id='<?=$this->lp_id?>';
+					if(lp_id=='' ){}
+					else if(closed_var=='0'){
+					if(!$('#myModal').is(':visible'))	
+					$('#myModal').appendTo("body").modal('show');
+					}
+				<?php } ?> 
+			}
+		
+		});
+    
+});		
+		
+	$('#myModal').on('hidden.bs.modal', function (e) {
+  			AddIpData(<?=$this->lp_id?>);
+			closed_var='1';
+		})
+</script>
+

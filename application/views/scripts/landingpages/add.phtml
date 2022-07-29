@@ -1,0 +1,498 @@
+<div id="agentlead_main" ng-app="AgentLeadGenesis" ng-controller="AgentLeadGenesisController" class="custom-form-wrapper">
+   <div class="row">
+      <div class="col-md-3 mr-top">
+      	<p class="back-p" style="margin-bottom: 50px;">
+   			<a href="<?php echo $this->baseUrl('landing-page-templates')?>" class="back-b btn btn-primary" style="float: left;">
+   				<i class="fas fa-arrow-left"></i>
+   				Go Back
+   			</a>
+   		</p>
+         <p class="cutom_group"><?php echo $this->form?></p>
+      </div>
+      <div class="col-md-9">
+         <?php if($this->temp_data['pt_id']==1){
+            $title="Homebuyer Mistakes";
+            ?>
+         <?php }
+            else if($this->temp_data['pt_id']==2){
+            	$title="Home Value";
+            ?>
+         <?php
+            }
+            else if($this->temp_data['pt_id']==3){
+            	$title="List of Homes";
+            ?>
+         <?php
+            }
+            else if($this->temp_data['pt_id']==4){
+            	$title="Sell Your Home For More";
+            ?>
+         <?php
+            }
+            else if($this->temp_data['pt_id']==4){
+            	$title="Sell Your Home For More";
+            ?>
+         <?php
+            }
+            else if($this->temp_data['pt_id']==5){
+            	$title="SELLER HOME VALUE(CUSTOM)";
+            ?>
+         <?php
+            }
+            ?>
+         <a href="#" id="hover_div"  class="cu_font" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="bottom"  data-content="The PAGE NAME has two functions. It will be displayed to the public as a part of the URL link. Also, choosing a short, easy to remember name will help you reference the landing page in the future. Do not add any special characters or spaces to the page name. For example you might name your page 'San Diego' and it will display as <a><?phpSITE_HTTP_URL?>/sandiego</a>"><span class="fa fa-question-circle"></span></a>
+         <div class=" text-left temp_head"> Customize <?php$title?> Template</div>
+         <?php if($this->temp_data['pt_id']==1){
+            $title="Homebuyer Mistakes";
+            ?>
+         <!-- Template -->
+         <div class="maxwidth">
+            <div class="innerpage res-page-width" style="background-color:transparent !important;">
+               <div class="video-wrp">
+                  <div class="embed-responsive embed-responsive-16by9">
+                     <div class="" id="video_main_parent">
+                        <div id="video_parent">
+                           <video id="bgvid" preload="" autoplay="" loop="" onended="this.currentTime=0" class="vjs-tech" src="<?php echo $this->baseUrl()?>/public/resources/page_templates/1453235549_1453096156_video.mp4" height="100%">
+                              <object autoplay="" loop="" onended="this.currentTime=0" name="html5_video_fallback" style="width:100%;" class="leanback-player-flash-fallback" id="html5_video_fallback" type="application/x-shockwave-flash" data="https://praegnanz.de/html5video/player/leanback/player.swf" width="100%" height="100%">
+                                 <param name="movie" value="https://praegnanz.de/html5video/player/leanback/player.swf">
+                                 <param name="allowfullscreen" value="true">
+                                 <param name="allowscriptaccess" value="always">
+                                 <param name="wmode" value="transparent">
+                                 <param name="aspectratio" value="16:9">
+                                 <param name="flashvars" value="autostart=true&amp;controlbar=false&amp;controls=false&amp;file=<?php echo $this->baseUrl()?>/public/resources/page_templates/1453235549_1453096156_video.mp4">
+                              </object>
+                           </video>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="main_rel_div">
+                  <div class="fullwidthdiv">
+                  </div>
+                  <br>
+                  <div class="container-fluid">
+                     <img src="<?php echo $this->baseUrl()?>/public/resources/page_templates/1454488724_1.jpg" class="hide">
+                     <div class="lead_magent text-center form_field_border form_field_border_margin">
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="input-form">
+                                 <form method="post" name="homeval_step1" id="homeval_step1" class="" novalidate="novalidate">
+                                    <div class="col-md-10 col-md-offset-1 form_field page1-position">
+                                       <div class="row">
+                                          <div class="video-content">
+                                             <div class="col-md-12">
+                                                <h1 class="head_style res-font">Learn The 5 Biggest Mistakes {{location}} Homebuyers Make When Purchasing a Home</h1>
+                                                <p class="sub res-sub-font">Hint: It’s Not Common Knowledge</p>
+                                                <button  name="submitbtn_" id="submitbtn_" type="submit" value="I DO NOT WANT TO MAKE THESE MISTAKES!" class="btn blue btn-primary bttnsubmit hvr-inner-shadow  btn-default site_button site_button1 btn btn-default" disabled="disabled">
+                                                I DO NOT WANT TO MAKE THESE MISTAKES!
+                                                </button>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </form>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <?php }
+            else if($this->temp_data['pt_id']==2){
+            	$title="Home Value";
+            ?>
+         <div align="center">
+            <div class="maxwidth">
+               <div class="innerpage img-background" style="background-color:transparent !important;">
+                  <div class="main_rel_div">
+                     <div class="fullwidthdiv">
+                     </div>
+                     <br>
+                     <div class="container-fluid">
+                        <img src="<?php echo $this->baseUrl()?>/public/resources/page_templates/1464777737_Untitled-2.jpg" class="hide">
+                        <div class="homeval-step1 text-center ">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <p class="new_home_title">YOUR NEIGHBORS {{location}} HOME JUST SOLD!</p>
+                              </div>
+                              <div class="col-md-12">
+                                 <p class="sub_text subtext-lineheight" >Find Out How This Affects Your Home's Current Value</p>
+                                 <br>
+                              </div>
+                              <div class="col-md-8 col-md-offset-2">
+                                 <div class="row">
+                                    <div class="col-md-6">
+                                       <div class="form_field form-field-padding box-height">
+                                          <div class="row margin-bottom-9">
+                                             <div class="col-md-2"><img src="<?php echo $this->baseUrl()?>/public/site_images/tick.png" alt="arrow"></div>
+                                             <div class="col-md-10 color_txt text-left page-id-2-line">Big brand online estimates can be 10%-20% off of true market value. We provide the most accurate estimate.</div>
+                                          </div>
+                                          <div class="row margin-bottom-9">
+                                             <div class="col-md-2"><img src="<?php echo $this->baseUrl()?>/public/site_images/tick.png"
+                                                alt="arrow"></div>
+                                             <div class="col-md-10 color_txt text-left">Get the three most comparable properties that recently sold near you.</div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-2"><img src="<?php echo $this->baseUrl()?>/public/site_images/tick.png"
+                                                alt="arrow"></div>
+                                             <div class="col-md-10 color_txt text-left">Simple, fast, and completely free!</div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <form method="post" name="homeval_step1" id="homeval_step1" class=""
+                                          novalidate="novalidate">
+                                          <div class="col-md-12 form_field form-field-padding box-height">
+                                             <div class="row">
+                                                <div class="col-md-12 form_text">
+                                                   Enter your address below to receive your free home valuation
+                                                </div>
+                                                <div class="col-md-12">
+                                                   <div class=" form-group ">
+                                                      <input type="text" name="pl_address" id="pl_address" value="" class="form-control required" placeholder="Enter Your Home Address" aria-required="true" autocomplete="off"><span class="fa fa-map-marker fa_custom"></span>
+                                                   </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div class="col-md-12 bottom_mar_div">
+                                                   <div class="row">
+                                                      <div class="col-md-4 col-sm-4 col-xs-4"><img src="<?php echo $this->baseUrl()?>/public/site_images/arrow.png" alt="arrow" height="54"></div>
+                                                      <div class="col-md-4 col-sm-4 col-xs-4"><img src="<?php echo $this->baseUrl()?>/public/site_images/arrow.png" alt="arrow" height="54"></div>
+                                                      <div class="col-md-4 col-sm-4 col-xs-4"><img src="<?php echo $this->baseUrl()?>/public/site_images/arrow.png" alt="arrow" height="54"></div>
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                   <button name="submitbtn" id="submitbtn" type="submit" value="I WANT MY ACCURATE HOME VALUE!" class="btn blue btn-primary bttnsubmit hvr-inner-shadow  btn-default site_button site_button1 btn btn-default fnt-size"  disabled="disabled">
+                                                   I WANT MY ACCURATE HOME VALUE!</button>
+                                                </div>
+                                                <div class=" form-group ">
+                                                   <input type="hidden" name="homeval_Lng" value="" class="" id="homeval_Lng">
+                                                </div>
+                                                <div class=" form-group ">
+                                                   <input type="hidden" name="homeval_Lat" value="" class="" id="homeval_Lat">
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </form>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <br>
+               </div>
+            </div>
+         </div>
+         <?php
+            }
+            else if($this->temp_data['pt_id']==3){
+            	$title="List of Homes";
+            ?>
+         <!-- Template -->
+         <div align="center">
+            <div class="maxwidth">
+               <div class="innerpage res-page-width " style="background-color:transparent !important;">
+                  <div class="video-wrp">
+                     <div class="embed-responsive embed-responsive-16by9">
+                        <div class="video_overlay_light" ></div>
+                        <div class="" id="video_main_parent" style="height:auto;">
+                           <div id="video_parent" >
+                              <video id="bgvid" preload="" autoplay="" loop="" onended="this.currentTime=0" class="vjs-tech" src="<?php echo $this->baseUrl()?>/public/resources/page_templates/1453235562_LadyWithKeys25689817.mp4"
+                                 height="100%">
+                                 <object autoplay="" loop="" onended="this.currentTime=0" name="html5_video_fallback" style="width:100%;"
+                                    class="leanback-player-flash-fallback" id="html5_video_fallback" type="application/x-shockwave-flash"
+                                    data="https://praegnanz.de/html5video/player/leanback/player.swf" width="100%" height="100%">
+                                    <param name="movie" value="https://praegnanz.de/html5video/player/leanback/player.swf">
+                                    <param name="allowfullscreen" value="true">
+                                    <param name="allowscriptaccess" value="always">
+                                    <param name="wmode" value="transparent">
+                                    <param name="aspectratio" value="16:9">
+                                    <param name="flashvars" value="autostart=true&amp;controlbar=false&amp;controls=false&amp;file=<?php echo $this->baseUrl()?>/public/resources/page_templates/1453235562_LadyWithKeys25689817.mp4">
+                                 </object>
+                              </video>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="main_rel_div">
+                     <div class="fullwidthdiv">
+                     </div>
+                     <br>
+                     <div class="container">
+                        <img src="<?php echo $this->baseUrl()?>/public/resources/page_templates/1454489020_2.jpg"	class="hide">
+                        <div class="lead_magent lead_magent2 text-center position-background">
+                           <div class="main_div_lines hidden-xs">
+                              <div class="left_line"> &nbsp;</div>
+                              <div class=" right_line">&nbsp; </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-1 col-sm-offset-1">
+                                 <div class="row home_div res-mr-top">
+                                    <div class="col-md-12 buyhome page-3-mr">LOOKING TO BUY A HOME?</div>
+                                    <div class="col-md-12 buytitle page-3-font">Get the 5 Hottest Home Deals In {{location}} </div>
+                                    <div class="col-md-12">
+                                       <div class="row">
+                                          <div class="col-md-6 lead_ul">
+                                             <div class="row">
+                                                <div class="col-md-2 col-sm-2 col-xs-3"><span class="fa fa-check bullet_style"></span></div>
+                                                <div class="col-md-10 col-sm-10 col-xs-9 bullet_text page-3-subheading">Completely
+                                                   free- no obligation!
+                                                </div>
+                                             </div>
+                                             <br>
+                                             <div class="row">
+                                                <div class="col-md-2 col-sm-2 col-xs-3"><span class="fa fa-check bullet_style"></span></div>
+                                                <div class="col-md-10 col-sm-10 col-xs-9 bullet_text page-3-subheading">The freshest
+                                                   most up to date listings
+                                                </div>
+                                             </div>
+                                             <br>
+                                             <div class="row">
+                                                <div class="col-md-2 col-sm-2 col-xs-3"><span class="fa fa-check bullet_style"></span></div>
+                                                <div class="col-md-10 col-sm-10 col-xs-9 bullet_text page-3-subheading">Forget about
+                                                   the listings that don't fit your needs. Find the home you
+                                                   REALLY want!
+                                                </div>
+                                             </div>
+                                             <br>
+                                          </div>
+                                          <div class="col-md-6 col-sm-12 col-xs-12" align="center">
+                                             <br>
+                                             <div class="col-md-12 col-sm-12 col-xs-12 home">
+                                                <form enctype="multipart/form-data" class="" novalidate="novalidate"
+                                                   role="form" method="post" name="home_form">
+                                                   <div class=" form-group ">
+                                                      <input type="text" name="pl_name" id="pl_name" value=""
+                                                         class="form-control" placeholder="Name">
+                                                   </div>
+                                                   <div class=" form-group ">
+                                                      <input type="text" name="pl_email" id="pl_email" value=""
+                                                         class="form-control required email" placeholder="Best Email"
+                                                         aria-required="true">
+                                                   </div>
+                                                   <button name="submitbtn" id="submitbtn" type="submit" value="GET MY LIST NOW" class="btn blue btn-primary bttnsubmit hvr-inner-shadow  btn-default lead_mag btn btn-default" disabled="disabled">
+                                                   GET MY LIST NOW</button>
+                                                </form>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <br>
+               </div>
+            </div>
+         </div>
+         <?php
+            }
+            else if($this->temp_data['pt_id']==4){
+            	$title="Sell Your Home For More";
+            ?>
+         <!-- Template -->
+         <div align="center">
+            <div class="maxwidth">
+               <div class="innerpage" style="background-color:transparent !important;">
+                  <div class="video-wrp">
+                     <div class="embed-responsive embed-responsive-16by9">
+                        <div class="video_overlay page-4-background"></div>
+                        <div class="" id="video_main_parent" style="height:auto;">
+                           <div id="video_parent">
+                              <video id="bgvid" preload="" autoplay="" loop="" onended="this.currentTime=0" class="vjs-tech" src="<?php echo $this->baseUrl()?>/public/resources/page_templates/1453438647_LuxuryKitchn51448145.mp4"
+                                 height="100%">
+                                 <object autoplay="" loop="" onended="this.currentTime=0" name="html5_video_fallback" style="width:100%;"
+                                    class="leanback-player-flash-fallback" id="html5_video_fallback" type="application/x-shockwave-flash"
+                                    data="https://praegnanz.de/html5video/player/leanback/player.swf" width="100%" height="100%">
+                                    <param name="movie" value="https://praegnanz.de/html5video/player/leanback/player.swf">
+                                    <param name="allowfullscreen" value="true">
+                                    <param name="allowscriptaccess" value="always">
+                                    <param name="wmode" value="transparent">
+                                    <param name="aspectratio" value="16:9">
+                                    <param name="flashvars" value="autostart=true&amp;controlbar=false&amp;controls=false&amp;file=<?php echo $this->baseUrl()?>/public/resources/page_templates/1453438647_LuxuryKitchn51448145.mp4">
+                                 </object>
+                              </video>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="main_rel_div">
+                     <div class="fullwidthdiv">
+                     </div>
+                     <br>
+                     <div class="container">
+                        <img src="<?php echo $this->baseUrl()?>/public/resources/page_templates/1464342047_Untitled-1.jpg" class="hide">
+                        <div class="lead_magent lead_magent2 sellerlead_magent text-center position-background">
+                           <div class="main_div_lines hidden-xs">
+                              <div class="left_line"> &nbsp;</div>
+                              <div class=" right_line">&nbsp; </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-xs-1 visible-xs"></div>
+                              <div class="col-md-10 col-sm-10 col-md-10 col-xs-12 col-md-offset-1 col-sm-offset-1">
+                                 <div class="row home_div res-mr-top">
+                                    <div class="col-md-12 buyhome overflow page-4-font">Looking To Sell Soon?</div>
+                                    <div class="col-md-12 buytitle overflow sellerleadgreen_title page-4-subtitle">
+                                       GET 5 PROVEN TIPS TO SELL YOUR {{location}} HOME FOR TOP DOLLAR
+                                    </div>
+                                    <div class="col-md-12 buyhome buyhome_blue overflow hint_new_class">
+                                       HINT: THEY ARE EASIER THAN YOU THINK
+                                    </div>
+                                    <div class="overflow home">
+                                       <form enctype="multipart/form-data" class="" novalidate="novalidate" role="form" method="post" name="home_form">
+                                          <button name="submitbtn" id="submitbtn" type="submit" value="I WANT TO MAKE BIG BUCKS ON MY HOME SALE!"
+                                             class="btn blue btn-primary bttnsubmit hvr-inner-shadow  btn-default lead_mag btn btn-default" disabled="disabled">
+                                          I WANT TO MAKE BIG BUCKS ON MY HOME SALE!
+                                          </button>
+                                       </form>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-xs-1 visible-xs"></div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <br>
+               </div>
+            </div>
+         </div>
+         <?php
+            }
+            ?>
+      </div>
+   </div>
+   <div>&nbsp;</div>
+   <div>&nbsp;</div>
+</div>
+<div>&nbsp;</div>
+<script>
+   $(document).ready(function(e) {
+   	$('#hover_div').insertBefore($('#lp_url'));
+          	$('[data-toggle="popover"]').popover({
+   
+   
+   			});
+   
+      });
+</script>
+<script>
+   // AgentLeadGenesis Angular Controller
+   $(document).ready(function(e) {
+   	var app = angular.module('AgentLeadGenesis', []);
+   	switch(<?php echo $this->temp_data['pt_id']; ?>){
+   		case 1:
+   			app.controller('AgentLeadGenesisController', function($scope) {
+   				  $scope.location = 'ENTER LOCATION';
+   				  $scope.location_disappear = true; 
+   				  $scope.onFocus = ()=>{
+   					  if ($scope.location_disappear){
+   						  $scope.location = ""; 
+   						  $scope.location_disappear = false; 
+   					  }
+   				  }
+   			});
+   			$("head").append(`<style> #lp_url {
+   									background: #fff !important;
+   								}</style>`);
+   		break;
+   		case 2:
+   		    var host_name = (window.location.hostname == "localhost")?"http://localhost/agentleads":'';
+   		    $("head").append(`
+   			   <style>
+   			   .img-background {
+   					background: url('`+ host_name +`/public/resources/page_templates/1462515294_new_page_bg.jpg') center !important;
+   						background-position-x: center;
+   						background-position-y: center;
+   						background-repeat: repeat;
+   						background-size: auto;
+   					background-size: cover !important;
+   					overflow-x: hidden;
+   					background-position: center !important;
+   					background-repeat: no-repeat !important;
+   					min-height: 100vh;
+   				}
+   			   </style>`);
+   		    $("body").addClass('homevaluation');
+   			app.controller('AgentLeadGenesisController', function($scope) {
+   				$scope.location = 'ENTER LOCATION';
+   				  $scope.location_disappear = true; 
+   				  $scope.onFocus = ()=>{
+   					  if ($scope.location_disappear){
+   						  $scope.location = ""; 
+   						  $scope.location_disappear = false; 
+   					  }
+   				  }
+   			});
+   			$("head").append(`<style> #lp_url {
+   									background: #fff !important;
+   								}</style>`);
+   		break;
+   		case 3:
+   		    app.controller('AgentLeadGenesisController', function($scope) {
+   				$scope.location = 'ENTER LOCATION';
+   				  $scope.location_disappear = true; 
+   				  $scope.onFocus = ()=>{
+   					  if ($scope.location_disappear){
+   						  $scope.location = ""; 
+   						  $scope.location_disappear = false; 
+   					  }
+   				  }
+   			});
+   			$("head").append(`<style> #lp_url {
+   									background: #fff !important;
+   								}</style>`);
+   		break;
+   		case 4:
+   		    app.controller('AgentLeadGenesisController', function($scope) {
+   				$scope.location = 'ENTER LOCATION';
+   				  $scope.location_disappear = true; 
+   				  $scope.onFocus = ()=>{
+   					  if ($scope.location_disappear){
+   						  $scope.location = ""; 
+   						  $scope.location_disappear = false; 
+   					  }
+   				  }
+   			});
+   			$("head").append(`<style> #lp_url {
+   									background: #fff !important;
+   								}</style>`);
+   		break;
+   		default:
+   		    // do nothing
+   		break;
+   	}
+   
+   //        if (window.location.hostname != "localhost"){
+   //			$('img').each(function(){
+   //				repl = $(this).attr("src").replace("http://localhost/agentleads/","");
+   //				$(this).attr("src", repl );
+   //			})
+   //			$('video').each(function(){
+   //				repl = $(this).attr("src").replace("http://localhost/agentleads/","");
+   //				$(this).attr("src", repl );
+   //			})
+   //			$('param[name=flashvars]').each(function(){
+   //				repl = $(this).attr("value").replace("http://localhost/agentleads/","");
+   //				$(this).attr("value", repl );
+   //			})
+   //	    }
+   
+   });
+</script>
+<script type="text/javascript">
+   jQuery(document).ready(function($) {
+   	$("#sidebar").css({
+   		display: 'none'
+   	});
+   	$('#agentlead_main').parent().removeClass('col-md-9');
+   	$('#agentlead_main').parent().removeClass('col-sm-7');
+   
+   	$('#agentlead_main').parent().addClass('col-md-12');
+   });
+</script>

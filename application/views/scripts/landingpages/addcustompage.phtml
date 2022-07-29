@@ -1,0 +1,441 @@
+<div ng-app="AgentLeadGenesis" ng-controller="AgentLeadGenesisController" class="custom-form-wrapper" id="Seller-Home-Value">
+   <div class="row">
+      <div class="col-md-3 mr-page-6">
+         <?php if($this->temp_data['pt_id']==1){
+            $title="Homebuyer Mistakes";
+            ?>
+         <?php } 
+            else if($this->temp_data['pt_id']==2){
+            	$title="Home Value";
+            ?>
+         <?php
+            }
+            else if($this->temp_data['pt_id']==3){
+            	$title="List of Homes";
+            ?>
+         <?php
+            }
+            else if($this->temp_data['pt_id']==4){
+            	$title="Sell Your Home For More";
+            ?>
+         <?php
+            }
+            else if($this->temp_data['pt_id']==4){
+            	$title="Sell Your Home For More";
+            ?>
+         <?php
+            }
+            else if($this->temp_data['pt_id']==5){
+            	$title="SELLER HOME VALUE(CUSTOM)";
+            ?>
+         <?php
+            }
+            ?>
+         <a href="#" id="hover_div"  class="cu_font" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="right"  data-content="The PAGE NAME has two functions. It will be displayed to the public as a part of the URL link. Also, choosing a short, easy to remember name will help you reference the landing page in the future. Do not add any special characters or spaces to the page name. For example you might name your page 'San Diego' and it will display as <a><?=SITE_HTTP_URL?>/sandiego</a>"><span class="fa fa-question-circle"></span></a>
+         <?php if($this->temp_data['pt_id']==1){
+            $title="Homebuyer Mistakes";
+            ?>
+         <p class="text-left"><img src="<?=HTTP_TEMPLATE_IMAGES?>/<?=$this->temp_data['pt_thumb']?>"   alt="Lead" /></p>
+         <?php } 
+            else if($this->temp_data['pt_id']==2){
+            	$title="Home Value";
+            ?>
+         <p class="text-left"><img src="<?=HTTP_TEMPLATE_IMAGES?>/<?=$this->temp_data['pt_thumb']?>"   alt="Lead" /></p>
+         <?php
+            }
+            else if($this->temp_data['pt_id']==3){
+            	$title="List of Homes";
+            ?>
+         <p class="text-left"> <img src="<?=HTTP_TEMPLATE_IMAGES?>/<?=$this->temp_data['pt_thumb']?>"   alt="Lead" /></p>
+         <?php
+            }
+            else if($this->temp_data['pt_id']==4){
+            	$title="Sell Your Home For More";
+            ?>
+         <p class="text-left"><img src="<?=HTTP_TEMPLATE_IMAGES?>/<?=$this->temp_data['pt_thumb']?>"   alt="Lead" /></p>
+         <?php
+            }
+            ?>
+            <p class="back-p" style="margin-bottom: 50px;">
+               <a href="<?php echo $this->baseUrl('landing-page-templates')?>" class="back-b btn btn-primary" style="float: left;">
+                  <i class="fa fa-angle-left"></i>&nbsp;
+                  Go Back
+               </a>
+            </p>
+         <p class="cutom_group"><?php echo $this->form?></p>
+         <div>&nbsp;</div>
+         <div>&nbsp;</div>
+      </div>
+      <div>&nbsp;</div>
+      <div class="row" id="sent1">
+         <div class="col-md-12">
+            <div class="border_div_custom">
+               <div class="row">
+                  <div class="col-md-12">
+                     <h3>Customize Sentence #1</h3>
+                  </div>
+                  <div class="clearfix">
+                     &nbsp;
+                  </div>
+                  <div class="col-md-6">
+                     <?php echo $this->newform->lps_font1?>
+                  </div>
+                  <div class="col-md-6">
+                     <?php echo $this->newform->lps_font_size1?>
+                  </div>
+                  <div class="col-md-6">
+                     <?php echo $this->newform->lps_font_style1?>
+                  </div>
+                  <div class="col-md-6">
+                     <?php echo $this->newform->lps_font_color1?>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row" id="sent2">
+         <div class="col-md-12">
+            <div class="border_div_custom">
+               <div class="row">
+                  <div class="col-md-12">
+                     <h3>Customize Sentence #2</h3>
+                  </div>
+                  <div class="clearfix">
+                     &nbsp;
+                  </div>
+                  <div class="col-md-6">
+                     <?php echo $this->newform->lps_font2?>
+                  </div>
+                  <div class="col-md-6">
+                     <?php echo $this->newform->lps_font_size2?>
+                  </div>
+                  <div class="col-md-6">
+                     <?php echo $this->newform->lps_font_style2?>
+                  </div>
+                  <div class="col-md-6">
+                     <?php echo $this->newform->lps_font_color2?>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row" id="button_st">
+         <div class="col-md-12">
+            <div class="border_div_custom">
+               <div class="row">
+                  <div class="col-md-12">
+                     <h3>Customize Button</h3>
+                  </div>
+                  <div class="clearfix">
+                     &nbsp;
+                  </div>
+                  <div class="col-md-6">
+                     <?php echo $this->newform->lps_font3?>
+                  </div>
+                  <div class="col-md-6">
+                     <?php echo $this->newform->lps_font_size3?>
+                  </div>
+                  <div class="col-md-6">
+                     <?php echo $this->newform->lps_background3?>
+                  </div>
+                  <div class="col-md-6">
+                     <?php echo $this->newform->lps_font_color3?>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div></div>
+      <div class="modal fade bs-example-modal-lg"  id="preview_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+         <div class="modal-dialog modal-lg">
+            <div class="modal-content content-iframe">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title">Preview</h4>
+               </div>
+               <div class="modal-body"  id="content_iframe" > 
+               </div>
+            </div>
+         </div>
+      </div>
+      
+      <div class="col-md-9">
+         <div class=" text-left temp_head"> Customize <?=$title?> Template
+            <button  style="visibility:hidden;" type="button" id="pre" class="pinkclassbtn pull-right">Preview Your page</button>
+         </div>
+         <!-- template -->
+         <div back-img="" class="homevaluation" align="center">
+            <div class="maxwidth">
+               <div class="innerpage" style="background-color:transparent !important;">
+                  <div class="main_rel_div">
+                     <div class="fullwidthdiv">
+                     </div>
+                     <br>
+                     <div class="container-fluid">
+                        <div class="homeval-step1 custom-home oswaldfont text-center">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <p id = "sentence_1_style" ng-style="sentence_1_style" class="head_style oswaldfont">
+                                    {{setence_1}}
+                                 </p>
+                              </div>
+                              <div class="col-md-12">
+                                 <p id="sentence_2_style" ng-style="sentence_2_style" class="sub">
+                                    {{setence_2}}
+                                 </p>
+                              </div>
+                              <form method="post" name="homeval_step1" id="homeval_step1" class="" novalidate="novalidate">
+                                 <div class="col-md-8 col-md-offset-2 form_field form-field-padding">
+                                    <div class="row">
+                                       <div class="col-md-12">
+                                          <div class="form-group has-error">
+                                             <input type="text" name="pl_address" id="pl_address" value="" class="form-control required"
+                                                placeholder="Enter Your Home Address" aria-required="true"
+                                                autocomplete="off" aria-invalid="true">
+                                          </div>
+                                       </div>
+                                       <div class="clearfix"></div>
+                                       <div class="col-md-12">
+                                          <button ng-style="submitbtn_style" name="submitbtn" id="submitbtn" type="submit" value="I WANT MY HOME VALUE NOW!" class="btn blue btn-primary bttnsubmit hvr-inner-shadow  btn-default site_button site_button1 btn btn-default" style="" disabled="disabled">
+                                          I WANT MY HOME VALUE NOW!
+                                          </button>
+                                       </div>
+                                       <div class=" form-group " style="display: none;">
+                                          <input type="hidden" name="homeval_Lng" value="-0.12775829999998223" class="" id="homeval_Lng">
+                                       </div>
+                                       <div class=" form-group " style="display: none;">
+                                          <input type="hidden" name="homeval_Lat" value="51.5073509" class="" id="homeval_Lat">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <br>
+               </div>
+            </div>
+         </div>
+         <!-- template end -->
+      </div>
+   </div>
+</div>
+<script>
+   $(document).ready(function(e) {
+   	$('#sent1').insertAfter($('#lp_c_sent1').parent());
+   	$('#sent2').insertAfter($('#lp_c_sent2').parent());
+   	$('#button_st').insertBefore($('#lp_url').parent());
+   	$('#hover_div').insertBefore($('#lp_url'));
+          $('[data-toggle="popover"]').popover({});
+   	// $('#lp_pixel_code').insertBefore($('#button_st').parent());
+      });
+    $(function() {
+          $('.c_picker').colorpicker();
+      });
+     $('#pre').click(function(e) {
+   	$('#lp_url').removeClass('required');
+   	$('#landing_pages').submit();
+      });	
+   
+   $('#landing_pages').submit(function(e) {
+   	
+     		if($('#lp_url').hasClass('required')){
+   		 return true;
+   	}
+   	else{
+   		 e.preventDefault();
+      		e.stopImmediatePropagation();
+   			$.ajax({
+   		url:'<?php echo SITE_HTTP_URL ?>/customhomevaluation/getstyles',
+   		type: "POST",
+   		data:  new FormData(this),
+   		contentType: false,
+   		cache: false,
+   		processData:false,
+   		success: function(data){
+   			
+   						$('#content_iframe').html(data);
+   						$('#lp_url').addClass('required');
+   						// $('#preview_modal').modal('show');
+   						e.preventDefault();
+    							 return false;
+   
+   		},
+   		error: function(){}          
+   	   
+   	   });
+     			e.preventDefault();
+    			 return false;
+   	}
+      });
+   
+</script>
+<?php if(isset($this->lp_bg_image)){?>
+<div class="form-group" id="image_div1">
+   <img src="<?=HTTP_TEMPLATE_IMAGES?>/100/<?=$this->lp_bg_image?>" />
+</div>
+<script>
+   $('#pt_background').removeClass('required');
+     	$('#image_div1').insertAfter($('#pt_background').parent());
+   
+   
+   
+</script>
+<?php }?>
+<script>
+   // AgentLeadGenesis Angular Controller 
+   $(document).ready(function(e) {
+   	var app = angular.module('AgentLeadGenesis', ['ngFileUpload']); 
+   
+   	app.controller('AgentLeadGenesisController', function($scope) {
+   			$scope.setence_1 = "DON'T LEAVE MONEY ON THE TABLE!"; 
+   			$scope.setence_2 = "Big brand online estimators can be off by 10-20%. Get your TRUE home value here."; 
+   			$scope.background = "";
+   			
+   			$scope.sentence_1_font = 'oswald_regular'; 
+   			$scope.sentence_1_font_size = '50'; 
+   			$scope.sentence_1_font_style = 'Normal'; 
+   			$scope.sentence_1_font_color = '#fff';
+   
+   			$scope.sentence_1_style = {
+   				"font-family": $scope.sentence_1_font, 
+   				"font-size":$scope.sentence_1_font_size, 
+   				"font-weight": $scope.sentence_1_font_style, 
+   				"color": $scope.sentence_1_font_color
+   			};  
+   
+   			$scope.sentence_2_font = 'oswald_regular'; 
+   			$scope.sentence_2_font_size = '36px'; 
+   			$scope.sentence_2_font_style = 'normal'; 
+   			$scope.sentence_2_font_color = '#fff';
+   
+   			$scope.sentence_2_style = {
+   				"font-family": $scope.sentence_2_font, 
+   				"font-size":$scope.sentence_2_font_size, 
+   				"font-weight": $scope.sentence_2_font_style, 
+   				"color": $scope.sentence_2_font_color
+   			}; 
+   
+   			$scope.button_font = ''; 
+   			$scope.button_font_size = '17'; 
+   			$scope.button_background_color = '#f42201'; 
+   			$scope.button_font_color = '#fff';
+   
+   			$scope.submitbtn_style = {
+   				"font-family": $scope.button_font, 
+   				"font-size":$scope.button_font_size, 
+   				"background": $scope.button_background_color, 
+   				"color": $scope.button_font_color
+   			}; 
+   
+   			$scope.$watch('background',function() {	$("#pre").click(); });
+   
+   			$scope.$watch('sentence_1_font',function() {
+   				$scope.sentence_1_style["font-family"] = $scope.sentence_1_font;
+   				$("style").append(`
+   				        #sentence_1_style {font-family:` + $scope.sentence_1_font + ` !important;}
+   				`);
+   			});
+   			$scope.$watch('sentence_1_font_size',function() {$scope.sentence_1_style["font-size"] =$scope.sentence_1_font_size + 'px' ;});
+   			$scope.$watch('sentence_1_font_style',function() {$scope.sentence_1_style["font-weight"] = $scope.sentence_1_font_style;});
+   			$scope.$watch('sentence_1_font_color',function() {$scope.sentence_1_style["color"] = $scope.sentence_1_font_color = $("#lps_font_color1").val();});
+   
+   			$scope.$watch('sentence_2_font',function() {$scope.sentence_2_style["font-family"] =$scope.sentence_2_font;});
+   			$scope.$watch('sentence_2_font_size',function() {
+   				$scope.sentence_2_style["font-size"] = $scope.sentence_2_font_size + 'px';
+   				$("style").append(`
+   				        #sentence_2_style {font-size:` + $scope.sentence_2_font_size + `px !important;}
+   				`);
+   			});
+   			$scope.$watch('sentence_2_font_style',function() {$scope.sentence_2_style["font-weight"] =$scope.sentence_2_font_style ;});
+   			$scope.$watch('sentence_2_font_color',function() {$scope.sentence_2_style["color"] = $scope.sentence_2_font_color = $("#lps_font_color2").val();});
+   			
+   			$scope.$watch('button_font',function() { $scope.submitbtn_style["font-family"] = $scope.button_font; });
+   			$scope.$watch('button_font_size',function() { $scope.submitbtn_style["font-size"] = $scope.button_font_size + "px"; });
+   			
+   			$scope.$watch('button_background_color',function() {
+   				 $scope.submitbtn_style["background"] = $scope.button_background_color = $("#lps_background3").val();
+   				$("style").append(`
+   				        #submitbtn {background:` + $scope.button_background_color + ` !important;}
+   				`); 
+   				 
+   			});
+   			$scope.$watch('button_font_color',function() {
+   				 $scope.submitbtn_style["color"] = $scope.button_font_color = $("#lps_font_color3").val();
+   			});
+   			 
+   			$scope.$watch(function(){
+   				$scope.sentence_1_style["color"] = $scope.sentence_1_font_color = $("#lps_font_color1").val();
+   				$scope.sentence_2_style["color"] = $scope.sentence_2_font_color = $("#lps_font_color2").val();
+   				$scope.submitbtn_style["color"] = $scope.button_font_color = $("#lps_font_color3").val();
+   				
+   				$("style").append(`
+   				        #submitbtn {color:` + $scope.button_font_color + ` !important;}
+   				`); 
+   			
+   				$scope.submitbtn_style["background"] = $scope.button_background_color = $("#lps_background3").val();
+   			});
+   	
+   		});  
+   
+   	app.directive('backImg', function(){
+   		return function(scope, element, attrs){
+   			var url = attrs.backImg;
+   			element.css({
+   				'background-image': 'url(' + url +')',
+   				'background-size' : 'cover'
+   			});
+   		};
+   	});
+   	$("head").append(`<style> #lp_url {
+   							background: #fff !important;
+   						}</style>`);
+   
+   	var host_name = (window.location.hostname == "localhost")?"http://localhost/agentleads":'';
+   	$("head").append(`
+   		<style>
+   		.homevaluation {
+   			background: url('`+host_name+`/public/resources/page_templates/1464282461_1452793565_banner.jpg') !important;
+   				background-position-x: 0%;
+   				background-position-y: 0%;
+   				background-repeat: repeat;
+   				background-size: auto;
+   			background-size: cover !important;
+   			width:100%;
+   			overflow-x: hidden;
+   			background-position: center !important;
+   			background-repeat: no-repeat !important;
+   			min-height: 100vh;
+   		}
+   		</style>`);
+   	// $("body").addClass('homevaluation');
+   
+   //		if (window.location.hostname != "localhost"){
+   //			$('img').each(function(){
+   //				repl = $(this).attr("src").replace("http://localhost/agentleads/","");
+   //				$(this).attr("src", repl );
+   //			})
+   //			$('video').each(function(){
+   //				repl = $(this).attr("src").replace("http://localhost/agentleads/","");
+   //				$(this).attr("src", repl );
+   //			})
+   //			$('param[name=flashvars]').each(function(){
+   //				repl = $(this).attr("value").replace("http://localhost/agentleads/","");
+   //				$(this).attr("value", repl );
+   //			})
+   //		}
+   
+   });
+</script>
+<script type="text/javascript">
+   jQuery(document).ready(function($) {
+       $("#sidebar").css({
+           display: 'none'
+       });
+       $('#Seller-Home-Value').parent().removeClass('col-md-9');
+       $('#Seller-Home-Value').parent().removeClass('col-sm-7');
+   
+       $('#Seller-Home-Value').parent().addClass('col-md-12');
+   });
+</script>
